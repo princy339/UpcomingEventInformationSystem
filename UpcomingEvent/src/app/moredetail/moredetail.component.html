@@ -1,0 +1,55 @@
+<div class="row p-5">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-body shadow rounded">
+                    <div class="row p-5">
+                        <div class="col-lg-4 bg-dark">
+                        <h2 class="text-danger  font-weight-bold text-uppercase mt-3">Update Event</h2>
+                            <div class="form-group mt-5">
+                                <label class="text-white">Please upload a photo of Speaker/Sponsor/Judge/Guest</label>
+                                <input (change)="getFile($event)" class="form-control-file text-white" name="chief" type="file" required>
+                            </div><br>
+                            <br><br>
+                            <div class="social mr-0">
+                                <a href="#" class="twitter text-white"><i class="fa fa-twitter m-2"></i></a>
+                                <a href="#" class="facebook text-white"><i class="fa fa-facebook m-2"></i></a>
+                                <a href="#" class="instagram text-white"><i class="fa fa-instagram m-2"></i></a>
+                                <a href="#" class="google-plus text-white"><i class="fa fa-google-plus m-2"></i></a>
+                                <a href="#" class="linkedin text-white"><i class="fa fa-linkedin m-2"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <form role="form" #createDetail="ngForm">
+                                <div class="form-group">
+                                    <label class="font-weight-bold">Choose a Event</label>
+                                    <select name="type"  [(ngModel)]="cForm.type" class="form-control" required>
+                                        <ng-container *ngFor= "let p of events">
+                                        <option   value = "{{p._id}}">{{p.title}} at {{p.location}} ({{p.date}}-{{p.time}})</option> 
+                                        </ng-container>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="font-weight-bold">Speaker/Sponsor/Judge/Guest Name</label>
+                                    <input  name="speaker" [(ngModel)]="cForm.speaker" class="form-control" required>
+                                    </div>
+                                
+                                <div class="form-group">
+                                    <label class="font-weight-bold">Description about speaker/sponsor</label>
+                                    <textarea  name="description" class="form-control" [(ngModel)]="cForm.description"  placeholder="Enter text" required></textarea>
+                                </div>
+                                <div class="text-center font-weight-bold form-group">
+                                <button type="button" (click)="addChief()" class="btn btn-danger">ADD</button>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.col-lg-8 (nested) -->
+                       
+                    </div>
+                    <!-- /.row (nested) -->
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>

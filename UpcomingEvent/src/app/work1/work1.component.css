@@ -1,0 +1,9 @@
+#flex-container{
+    height:100%;
+    width:100%;
+    justify-content:space-evenly;
+    display:flex;
+    flex-wrap: wrap;
+    border:solid 1px;
+  }
+  

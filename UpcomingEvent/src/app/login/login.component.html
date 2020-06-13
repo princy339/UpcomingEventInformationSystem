@@ -1,0 +1,26 @@
+<section id="contact" class="section-bg wow fadeInUp mt-5">
+  <div class="container">
+    <div class="section-header">
+      <h2>Log in</h2>
+      <p>Login an account for admin and users</p>
+    </div>
+  <div class="form">
+    <form method="post" class="contactForm" #signUpForm="ngForm">
+      <div class="form-row">
+        <span class="form-group col-md-6">Email:</span>
+          <input class="form-control shadow" type="email" [(ngModel)]="sform.email"  id="lemail" placeholder="Enter Email" name="email">
+          <span class="text-danger">Email is required</span>
+      </div>
+      <div class="form-row">
+        <span class="form-group col-md-6">Password:</span>
+          <input class="form-control shadow" type="password" [(ngModel)]="sform.password" id="lpwd" placeholder="Enter Password" name="pwd">
+          <span class="text-danger">Password is required</span>
+      </div>
+      <div class="text-center">
+        <button type="submit" (click)="login()">Log in</button>
+        <button class="ml-2" type="submit" routerLink="/signup">Register</button>
+      </div>
+    </form>
+  </div>
+</div>
+</section>

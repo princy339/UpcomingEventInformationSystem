@@ -1,0 +1,106 @@
+<div class="container">
+    <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading text-center font-weight-bold text-uppercase bg-dark text-danger p-3">
+                                <strong style="font-size:30px;">Contact Form</strong>
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body table-responsive">
+                                <table width="100%" class=" table shadow alert alert-secondary table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                        <tr class="text-center ">
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Subject</th>
+                                            <th>Message</th> 
+                                            <th>Action</th>                                                                               
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr  *ngFor="let c of details" class="gradeC m-2 text-capitalize">
+                                            <td>{{c.name}}</td>
+                                            <td>{{c.email}}</td>
+                                            <td>{{c.subject}}</td>
+                                            <td>{{c.message}}</td>
+                                            <td class="mr2">
+                                            <button  (click)="updae(p)" type="button" class="btn btn-primary" 
+                                                data-toggle="modal" data-target="#myModal">Update</button>
+                                            <button class="btn btn-info  mb-2">Delete</button>   
+                                            </td>
+                                        </tr>
+                                        
+                                    </tbody>
+                                </table>
+                                <!-- /.table-responsive -->
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+    
+<!-- Modal -->
+<div *ngIf="customerToBeUpdated" id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+  
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          
+          <div class="container">
+            <div class="card card-register mx-auto mt-5">
+              <div class="card-header">Update Customer</div>
+              <div class="card-body">
+                <form>
+                  <div class="form-group">
+                    <div class="form-row">
+                      <div class="col-md-6">
+                        <div class="form-label-group">
+                          <input type="text" id="firstName" name="nm" class="form-control" [(ngModel)]="customerToBeUpdated.name" placeholder="First name" required="required" autofocus="autofocus">
+                          <label for="Name">Name</label>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="form-label-group">
+                          <input type="email" id="inputEmail" name="em" class="form-control" [(ngModel)]="customerToBeUpdated.email" placeholder="Email address" required="required">
+                          <label for="inputEmail">Email address</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-label-group">
+                          <input type="text" id="lastName" name="su" class="form-control" [(ngModel)]="customerToBeUpdated.subject" placeholder="Last name" required="required">
+                          <label for="Subject">Subject</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="form-row">
+                      <div class="col-md-6">
+                        <div class="form-label-group">
+                          <input type="password" id="inputPassword" name="me" class="form-control" [(ngModel)]="customerToBeUpdated.message" placeholder="Password" required="required">
+                          <label for="message">Message</label>
+                        </div>
+                      </div>
+                     
+                    </div>
+                  </div>
+                  <a class="btn btn-primary btn-block" (click)="updateConfirm()">Update</a>
+                </form>
+               
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>

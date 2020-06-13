@@ -1,0 +1,175 @@
+<section id="about">
+    <div class="container-fluid mt-5">
+        <div class="row">
+            <div class="col-lg-1 ">
+             <img src="http://localhost:3000/logo_{{posts[0]._id}}.jpg" class="rounded"  height="80" width="85"> 
+            </div>
+            <div class="col-lg-9">
+              <h2>{{posts[0].title}}</h2>
+              <p class="text-uppercase">{{posts[0].location}}</p>
+            </div>
+            <div class="col-lg-2">
+               <button type="button" class="btn btn-default btn-danger mt-2 mb-3"
+                data-toggle="modal" data-target="#myModal">I am interested</button>
+            </div>
+        </div> 
+          <div class="row"> 
+            <div class="col-lg-8">
+             <img src="http://localhost:3000/banner_{{posts[0]._id}}.jpg" class="img-fluid"> 
+            </div>
+            <div class="col-lg-4 mt-2">
+                <h3>Date and Time</h3>
+                    <p>
+                    <i class="fa fa-clock-o"></i> {{ posts[0].date }} <br>
+                    {{posts[0].time}}
+                    </p>
+                    <br>
+                    <h3>Full Address</h3>
+                    <p><i class="fa fa-map-marker"></i>{{posts[0].fulladdress}}</p>
+
+                    <agm-map [latitude]="lat" [longitude]="lng"></agm-map>
+                    <p>
+                      <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14233.820308749055!2d75.
+                          7997122220725!3d26.889048880202285!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db
+                          be3265f9%3A0xbc847ecbddfc25e9!2sBapu%20Nagar%2C%20Jaipur%2C%20Rajasthan%20302007!5e0!3m2!1s
+                          en!2sin!4v1576319076910!5m2!1sen!2sin"
+                          width="300" height="260" frameborder="0" style="border:0;"
+                            allowfullscreen="">
+                      </iframe> -->
+                    </p>
+            </div>
+          </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <h3>description about event</h3>
+            <p>
+              {{posts[0].description}}
+            </p>
+          </div>
+        </div>
+        
+       
+          <h2 class=" text-center" style="margin:0 auto;" > Speaker Details </h2>
+          <section id="speakers" class="wow fadeInUp ">
+            <div class="row ">
+            <div class="col-lg-12" id="flex-container">
+              <ng-container *ngFor="let chief of posts[0].chiefparty">
+              <div class="speaker mt-5">
+                <img height="300px;" width="300px;" alt="speaker 1" src="http://localhost:3000/chief{{posts[0]._id}}_{{chief.count}}.jpg" class="img-fluid">
+                <div class="details">
+                <h3><a>{{chief.speaker}}</a></h3><p>{{chief.description}}</p>
+                <div class="social">
+                  <a><i class="fa fa-twitter"></i></a>
+                  <a><i class="fa fa-facebook"></i></a>
+                  <a><i class="fa fa-google-plus"></i></a>
+                  <a><i class="fa fa-linkedin"></i></a>
+                </div>
+              </div>
+            </div>
+              </ng-container>
+            </div>
+            </div>
+          </section>
+        
+  <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">User Details</h4>
+        </div>
+        <div class="modal-body">
+          
+          <div class="form">
+            <form #a="ngForm" method="post" role="form" class="contactForm">
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <input type="text" name="name" #na="ngModel" [(ngModel)]="nameIn" class="form-control" id="name" placeholder="Your Name"
+                 data-rule="minlen:4" data-msg="Please enter at least 4 chars"/>
+                 <span *ngIf="na.invalid && na.touched" class="text-danger">Please Enter Name</span>
+              <div class="validation"></div>
+            </div>
+            <div class="form-group col-md-6">
+              <input type="email" class="form-control"  #em="ngModel" name="email" [(ngModel)]="emailIn"
+              id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+              
+              <span *ngIf="em.invalid && em.touched" class="text-danger">Please Enter Email</span>
+              <div class="validation"></div>
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" #su="ngModel" name="subject" [(ngModel)]="sub" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+            <div class="validation"></div>
+          </div>
+          <div class="form-group">
+            <textarea class="form-control" name="message" #ms="ngModel" [(ngModel)]="msg" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+            <div class="validation"></div>
+          </div>
+          <div class="text-center"><button type="submit" (click)="fun()">Send Message</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>  
+
+    </div>
+
+</div>  
+</section>
+
+  <!--<section id="supporters" class="section-with-bg wow bg-dark fadeInUp" >
+    <div class="container">
+      <div class="section-header">
+        <h2>Sponsors</h2>
+      </div>
+
+      <div class="row no-gutters supporters-wrap clearfix">
+
+        <div class="col-lg-3 col-md-4 col-xs-6">
+          <div class="supporter-logo">
+            <img src="assets/img/supporters/1.png" class="img-fluid" alt="">
+          </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-xs-6">
+          <div class="supporter-logo">
+            <img src="assets/img/supporters/2.png" class="img-fluid" alt="">
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-xs-6">
+          <div class="supporter-logo">
+            <img src="assets/img/supporters/3.png" class="img-fluid" alt="">
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-xs-6">
+          <div class="supporter-logo">
+            <img src="assets/img/supporters/4.png" class="img-fluid" alt="">
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-xs-6">
+          <div class="supporter-logo">
+            <img src="assets/img/supporters/5.png" class="img-fluid" alt="">
+          </div>
+        </div>
+      <div class="col-lg-3 col-md-4 col-xs-6">
+          <div class="supporter-logo">
+            <img src="assets/img/supporters/6.png" class="img-fluid" alt="">
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-xs-6">
+          <div class="supporter-logo">
+            <img src="assets/img/supporters/7.png" class="img-fluid" alt="">
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-xs-6">
+          <div class="supporter-logo">
+            <img src="assets/img/supporters/8.png" class="img-fluid" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>-->
