@@ -45,8 +45,15 @@
                                 <div class="form-group">
                                     <label>Full Address</label>
                                     <textarea  name="fulladdress" class="form-control" [(ngModel)]="cForm.fulladdress"  placeholder="Enter text" required></textarea>
+                                    <!-- <a href="https://www.googlemaps.com"><button class="btn help">i</button></a> -->
+                                </div>
+                                <div class="form-group">
+                                    <label>Please enter latitude and longitude</label>
+                                    <input name="val-lat" type="text" [(ngModel)]="cForm.latitude" class="form-control" value="user latitude" required>
+                                    <input name="val-lng" type="text" [(ngModel)]="cForm.longitude" class="form-control" value="user longitude" required>
                                     <a href="https://www.googlemaps.com"><button class="btn help">i</button></a>
                                 </div>
+
                                 <div class="form-group">
                                     <label>Description</label>
                                     <textarea  name="description" class="form-control" [(ngModel)]="cForm.describe"  placeholder="Enter text" required></textarea>

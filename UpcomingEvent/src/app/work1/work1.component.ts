@@ -15,14 +15,7 @@ import { ActivatedRoute } from '@angular/router';
 export class Work1Component implements OnInit {
   lat: number = 51.678418;
   lng: number = 7.809007;
-  nameIn;
-  emailIn;
-  sub;
-  msg;
-  na;
-  lo;
-  posts;
-  id;
+  nameIn;  emailIn;  sub; msg; na; lo;posts;id;
   constructor( private ds:DataService, private route:ActivatedRoute) { }
 
   ngOnInit() {
