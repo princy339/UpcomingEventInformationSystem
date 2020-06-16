@@ -120,6 +120,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "UpcomingEvent"
+    }
+  },
+  "defaultProject": "UpcomingEvent",
+  "cli": {
+    "analytics": "74c155a2-baec-4100-a285-ec5b478804b4"
+  }
 }

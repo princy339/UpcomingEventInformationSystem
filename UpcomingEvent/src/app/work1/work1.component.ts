@@ -13,8 +13,8 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./work1.component.css']
 })
 export class Work1Component implements OnInit {
-  lat: number = 51.678418;
-  lng: number = 7.809007;
+  lat: number = 26.922070;
+  lng: number = 	75.778885;
   nameIn;
   emailIn;
   sub;
