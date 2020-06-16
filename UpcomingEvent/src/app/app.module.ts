@@ -72,6 +72,7 @@ import { DetailComponent } from './detail/detail.component';
       // apiKey: 'AIzaSyDnlOo66_inDjmykJ8ZvailecQwDLxqDhU'
       apiKey:'AIzaSyBs8X-LOrcTknC5aukQfEU6Y6c08Ul4oa8'
     })
+
   ],
   providers: [],
   bootstrap: [AppComponent]
