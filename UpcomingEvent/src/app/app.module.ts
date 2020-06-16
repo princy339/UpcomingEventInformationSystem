@@ -69,8 +69,10 @@ import { DetailComponent } from './detail/detail.component';
     FormsModule,
     ReactiveFormsModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyBs8X-LOrcTknC5aukQfEU6Y6c08Ul4oa8'
-  })
+      // apiKey: 'AIzaSyDnlOo66_inDjmykJ8ZvailecQwDLxqDhU'
+      apiKey:'AIzaSyBs8X-LOrcTknC5aukQfEU6Y6c08Ul4oa8'
+    })
+
   ],
   providers: [],
   bootstrap: [AppComponent]
