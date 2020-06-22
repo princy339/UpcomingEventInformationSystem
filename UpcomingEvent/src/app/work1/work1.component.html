@@ -20,14 +20,34 @@
             <div class="col-lg-4 mt-2">
                 <h3>Date and Time</h3>
                     <p>
-                    <i class="fa fa-clock-o"></i> {{ posts[0].date }} <br>
+                    <i class="fa fa-clock-o"></i>{{ posts[0].date }} <br>
                     {{posts[0].time}}
                     </p>
                     <br>
                     <h3>Full Address</h3>
-                    <p><i class="fa fa-map-marker"></i>{{posts[0].fulladdress}}</p>
+                    <p><i class="fa fa-map-marker"></i> {{posts[0].fulladdress}}</p>
                     <p>
-                    <agm-map [latitude]="lat" [longitude]="lng"></agm-map>
+                      <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]='3' [zoomControl]='zoomControl'>
+                        <agm-marker [latitude]="latitude" [longitude]="longitude" [iconUrl]="{url:'../../assets/img/avt/map-marker.png', scaledSize:{height:45, width:45}}" >
+                          <agm-info-window>
+                            <h6>Longitude:{{posts[0].longitude}}</h6>
+                            <h6>Latitude: {{posts[0].latitude}}</h6>
+                          </agm-info-window>
+                        </agm-marker>
+
+                      <!-- <ng-container *ngFor="let u of usersList">
+                        <agm-marker   *ngIf="u.location"    [latitude]='u.location.coordinates[1]'
+                           [longitude]='u.location.coordinates[0]'>
+                          
+                            <agm-info-window #window>
+                              <h6>Longitude: {{u.location.coordinates[0]}}</h6>
+                              <h6>Latitude: {{u.location.coordinates[1]}}</h6>
+                              <h6>Name: {{u.name}}</h6>
+                              <h6>email: {{u.email}}</h6>
+                            </agm-info-window>
+                        </agm-marker>
+                      </ng-container> -->
+                      </agm-map>
                     </p> 
             </div>
           </div>

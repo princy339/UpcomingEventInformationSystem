@@ -134,7 +134,6 @@ app.post('/register', bodyParser.json(), (req, res) => {
 
 //backend event forms
     app.get('/getevent', (req, res) => {
-
     const collection = connection.db('ads').collection("workshop");
 
     collection.find().toArray(function (err, docs) {
@@ -144,7 +143,7 @@ app.post('/register', bodyParser.json(), (req, res) => {
 
 })
 
-  //upload detail of all events
+  //upload detail of logo and banner of all events
  app.post('/createevent',upload.fields([{
     name: 'banner', maxCount: 1
   }, {
@@ -159,7 +158,7 @@ app.post('/register', bodyParser.json(), (req, res) => {
             if (!err) {
     
                  //console.log("result of insert is -> " +r.ops[0]);
-                 console.log("result of insert is _id -> " + r.insertedId);
+                 //console.log("result of insert is _id -> " + r.insertedId);
     
                  fs.renameSync('./uploads/banner.jpg', './uploads/banner_'+r.insertedId + '.jpg');
                  fs.renameSync('./uploads/logo.jpg', './uploads/logo_'+r.insertedId + '.jpg');
@@ -172,13 +171,13 @@ app.post('/register', bodyParser.json(), (req, res) => {
              }
          });
      })
-     //upload detail of all events
+     //upload  more detail of all events
  app.post('/addchief',upload.fields([{
     name: 'chief', maxCount: 1
   }]), function (req, res, next) {
    
       const collection = connection.db('ads').collection("workshop");
-      console.log(req.body);
+      //console.log(req.body);
  
          collection.updateOne({_id:ObjectID(req.body._id)},
          { $push: { chiefparty: 
@@ -201,7 +200,7 @@ app.post('/register', bodyParser.json(), (req, res) => {
      })
 
 
-//already registerd users
+//already registerd users which is super or admin(member)
 
 app.post('/login', bodyParser.json(), (req, res) => {
 
@@ -211,7 +210,7 @@ app.post('/login', bodyParser.json(), (req, res) => {
     (err, docs) => {
         console.log("docs"+docs)
         if (!err && docs) {
-            console.log(docs);
+        console.log(docs);
             res.send({ msg: "sucessfully Logged In", status: 'OK', description: docs });
         }
         else{

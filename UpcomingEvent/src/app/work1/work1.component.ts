@@ -13,8 +13,8 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./work1.component.css']
 })
 export class Work1Component implements OnInit {
-  lat: number = 26.922070;
-  lng: number = 	75.778885;
+  latitude: string = '';
+  longitude: string = '';
   nameIn;
   emailIn;
   sub;
@@ -28,11 +28,12 @@ export class Work1Component implements OnInit {
   ngOnInit() {
         this.route.queryParamMap.subscribe((p)=>{
         this.id=p.get('id');
-         // alert(p.get('id'));
+         //alert(p.get('id'));
           this.ds.getEvents().subscribe((d)=>{
             this.posts=d.desc;
             this.posts=this.posts.filter((p)=>{
               return p._id==this.id;
+              
             })
           })
     })

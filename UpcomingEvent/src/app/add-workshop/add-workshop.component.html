@@ -42,32 +42,40 @@
                                     <label>Location</label>
                                     <textarea name="location" [(ngModel)]="cForm.location" class="form-control"  placeholder="Enter text" required></textarea>
                                 </div>
+                                
+                                <!-- <div class="form-group">
+                                    <a href="https://www.googlemaps.com"><button class="btn help">i</button></a>
+                                </div> -->
+                                <div class="form-group" class="row">
+                                    <div class="col-lg-6">
+                                        <label>Please enter Latitude of location</label>
+                                        <input name="latitude" type="text" [(ngModel)]="cForm.latitude" class="form-control" required>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label>Please enter Longitude of location</label>
+                                        <input name="longitude" type="text" [(ngModel)]="cForm.longitude" class="form-control" required>
+                                    </div>
+                                </div>
                                 <div class="form-group">
                                     <label>Full Address</label>
                                     <textarea  name="fulladdress" class="form-control" [(ngModel)]="cForm.fulladdress"  placeholder="Enter text" required></textarea>
-                                    <!-- <a href="https://www.googlemaps.com"><button class="btn help">i</button></a> -->
                                 </div>
-                                <div class="form-group">
-                                    <label>Please enter latitude and longitude</label>
-                                    <input name="val-lat" type="text" [(ngModel)]="cForm.latitude" class="form-control" value="user latitude" required>
-                                    <input name="val-lng" type="text" [(ngModel)]="cForm.longitude" class="form-control" value="user longitude" required>
-                                    <a href="https://www.googlemaps.com"><button class="btn help">i</button></a>
-                                </div>
-
                                 <div class="form-group">
                                     <label>Description</label>
                                     <textarea  name="description" class="form-control" [(ngModel)]="cForm.describe"  placeholder="Enter text" required></textarea>
                                 </div>
-                                <div class="form-group">
-                                    <label>Event logo</label>
-                                    <input (change)="getFile($event)"  name="logo" class="ml-2" type="file" required>
+                                <div class="form-group" class="row">
+                                   <div class="col-lg-5">
+                                        <label>Event logo</label>
+                                        <input (change)="getFile($event)"  name="logo" type="file" required>
+                                    </div>
+                                    <div class="col-lg-7">
+                                        <label>Event Banner</label>
+                                        <input (change)="getFile($event)"  name="banner" type="file" required>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label>Event Banner</label>
-                                    <input (change)="getFile($event)" class="ml-2" name="banner" type="file" required>
-                                </div>
-                                <div class="form-group text-center font-weight-bold">
-                                <button type="button" (click)="addWorkshop()" class=" mb-2 btn btn-danger">Add Event</button>
+                                <div class="form-group font-weight-bold text-center">
+                                <button type="button" (click)="addWorkshop()" class=" mb-2 mt-4 btn btn-danger">Add Event</button>
                                 </div>
                             </form>
                         </div>

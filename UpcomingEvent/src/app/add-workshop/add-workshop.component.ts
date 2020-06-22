@@ -26,8 +26,8 @@ export class AddWorkshopComponent implements OnInit {
      formdata.set('date', this.cForm.date + '');
      formdata.set('location', this.cForm.location);
      formdata.set('fulladdress', this.cForm.fulladdress);
-     formdata.set('val-lat', this.cForm.latitude);
-     formdata.set('val-lng', this.cForm.longitude);
+     formdata.set('latitude', this.cForm.latitude);
+     formdata.set('longitude', this.cForm.longitude);
      formdata.set('description', this.cForm.describe);
      formdata.set('email', localStorage.getItem('email'));
      formdata.set('time', this.cForm.time);
