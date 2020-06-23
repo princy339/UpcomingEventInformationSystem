@@ -34,7 +34,7 @@ const routes: Routes = [
     {path:'subscribe',component:SubscribeComponent},
     {path:'contact',component:ContactComponent},
   ]},
-    {path:'dashboard',component:DashboardComponent,canActivate:[AuthGuard],children:[
+    {path:'dashboard',component:DashboardComponent,canActivate:[AuthGuard] ,children:[
     {path:'addWorkshop',component:AddWorkshopComponent},
     {path:'listworkshop',component:AllWorkShopComponent},
     {path:'moredetail',component:MoredetailComponent},

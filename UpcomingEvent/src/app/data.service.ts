@@ -36,6 +36,7 @@ export class DataService {
 
   }
   getEvents():any{
+    //alert(JSON.stringify);
     return this.http.get("http://localhost:3000/getevent");
   }
  
@@ -50,6 +51,7 @@ export class DataService {
   }
 
   addWorkshop(formdata: FormData):any {
+    //alert(JSON.stringify(formdata));
     return this.http.post( "http://localhost:3000/createevent",formdata);
   }
 

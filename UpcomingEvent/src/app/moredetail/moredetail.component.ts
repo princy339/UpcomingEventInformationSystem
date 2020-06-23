@@ -29,7 +29,7 @@ export class MoredetailComponent implements OnInit {
 
     
     formdata.set('count', p[0].chiefparty.length);
-    alert(JSON.stringify(p[0].chiefparty.length));
+    //alert(JSON.stringify(p[0].chiefparty.length));
     this.ds.addChief(formdata).subscribe(data => {
      // alert('create event status is ' + data.status);
       //console.log(data);

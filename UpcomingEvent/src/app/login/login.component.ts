@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
   sform = new SignUpForm();
   constructor(private ds: DataService, private router: Router) { }
   ngOnInit() {}
+  
   login()  {
     this.ds.login(this.sform).subscribe((data) => {
     //console.log(data);
@@ -22,7 +23,8 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('email', data.description.email);
         localStorage.setItem('role', data.description.role);
         localStorage.setItem('name', this.sform.name);
-        this.router.navigate(['dashboard'], { queryParams: { 'email': this.sform.email, 'password': this.sform.password }});
+        this.router.navigate(['dashboard'], // { queryParams: { 'email': this.sform.email, 'password': this.sform.password }}
+        );
       }
    });
 }
