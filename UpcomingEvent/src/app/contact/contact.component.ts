@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { DataService } from '../data.service';
 @Component({
@@ -12,6 +12,7 @@ export class ContactComponent implements OnInit {
   sub;
   msg;
   posts;
+  @ViewChild('ab') ab;
   constructor(private ds:DataService) { }
   ngOnInit() {
     this.ds.getData().subscribe((d)=>{
@@ -23,7 +24,7 @@ fun():any{
   this.ds.sendData({name:this.nameIn,email:this.emailIn,subject:this.sub,message:this.msg})
   .subscribe((f)=>{
       if(f.status=="success"){
-        alert("your data is submitted");
+        alert("Data is submitted");
       }
       else{
       alert("some errors are there");

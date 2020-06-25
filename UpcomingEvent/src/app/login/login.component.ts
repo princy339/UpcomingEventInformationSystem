@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('email', data.description.email);
         localStorage.setItem('role', data.description.role);
         localStorage.setItem('name', this.sform.name);
-        this.router.navigate(['dashboard'], // { queryParams: { 'email': this.sform.email, 'password': this.sform.password }}
+        this.router.navigate(['dashboard'], // queryParams: { 'name': this.sform.name }}
         );
       }
    });

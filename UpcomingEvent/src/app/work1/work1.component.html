@@ -27,10 +27,10 @@
                     <h3>Full Address</h3>
                     <p><i class="fa fa-map-marker"></i> {{posts[0].fulladdress}}</p>
                     <p>
-                      <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]='3' [zoomControl]='zoomControl'>
-                        <agm-marker [latitude]="latitude" [longitude]="longitude" [iconUrl]="{url:'../../assets/img/avt/map-marker.png', scaledSize:{height:45, width:45}}" >
+                      <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]='4' [zoomControl]='zoomControl'>
+                        <agm-marker [latitude]="posts[0].latitude" [longitude]="posts[0].longitude" [iconUrl]="{url:'../../assets/img/avt/map-marker.png', scaledSize:{height:45, width:45}}"  >
                           <agm-info-window>
-                            <h6>Longitude:{{longitude}}</h6>
+                            <h6>Longitude:{{posts[0].longitude}}</h6>
                             <h6>Latitude: {{posts[0].latitude}}</h6>
                           </agm-info-window>
                         </agm-marker>
