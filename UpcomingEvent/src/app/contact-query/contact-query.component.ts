@@ -14,13 +14,13 @@ export class ContactQueryComponent implements OnInit {
     this.ds.getData().subscribe((d)=>{
       this.details=d.desc;
     })
+  }
 
-
- function update(p)
+ update(p)
   {
       this.customerToBeUpdated=p;
   }
-  function updateConfirm()
+updateConfirm()
   {
     this.ds.updatePost(this.customerToBeUpdated).subscribe((d)=>{
       if(d.status=="success")
@@ -35,7 +35,5 @@ export class ContactQueryComponent implements OnInit {
         alert("gadbad ho gyi")
       }
     });
-  }
-
   }
 }

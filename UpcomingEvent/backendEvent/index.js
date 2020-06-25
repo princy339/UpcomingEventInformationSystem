@@ -8,7 +8,8 @@ var multer = require('multer');
 var fs = require('fs');
 
 
-let client = new MongoClient('mongodb://localhost:27017/ads',{useNewUrlParser:true});
+// let client = new MongoClient('mongodb://localhost:27017/ads',{useNewUrlParser:true});
+    let client = new MongoClient('mongodb+srv://admin_123:admin_123@cluster0-peafg.mongodb.net/EventsDetails?retryWrites=true&w=majority' ,{useNewUrlParser:true});
     let connection;
         client.connect((err,db)=>{
         if(!err){
@@ -44,7 +45,7 @@ let client = new MongoClient('mongodb://localhost:27017/ads',{useNewUrlParser:tr
 //for contacts
     app.get('/getcontact',(req,res)=>{
 
-    let mytable= connection.db('ads').collection('contact'); 
+    let mytable= connection.db('EventsDetails').collection('contact'); 
         mytable.find().toArray((err,docs)=>{
 
         console.log(docs);
@@ -57,7 +58,7 @@ let client = new MongoClient('mongodb://localhost:27017/ads',{useNewUrlParser:tr
         })
     });
     app.post('/createcontact', bodyParser.json(),(req,res)=>{
-    let mytable= connection.db('ads').collection('contact'); 
+    let mytable= connection.db('EventsDetails').collection('contact'); 
     mytable.insert(req.body,(err,result)=>{
         if(!err){
             res.send({status:"success",desc:"student created successfully"});
@@ -71,7 +72,7 @@ let client = new MongoClient('mongodb://localhost:27017/ads',{useNewUrlParser:tr
     app.post('/updatecustomer', bodyParser.json(),(req,res)=>{
    
         console.log(req.body);
-            let mytable= connection.db('ads').collection('contact'); 
+            let mytable= connection.db('EventsDetails').collection('contact'); 
             mytable.update({_id:ObjectId(req.body._id)},{$set:{name:req.body.name,
                   email:req.body.email,subject:req.body.subject, message:req.body.message }},
                  (err,result)=>{
@@ -87,7 +88,7 @@ let client = new MongoClient('mongodb://localhost:27017/ads',{useNewUrlParser:tr
 //for interested users
 app.get('/getuser',(req,res)=>{
 
-    let mytable= connection.db('ads').collection('interested'); 
+    let mytable= connection.db('EventsDetails').collection('interested'); 
      mytable.find().toArray((err,docs)=>{
 
         console.log(docs);
@@ -100,7 +101,7 @@ app.get('/getuser',(req,res)=>{
     })
 });
 app.post('/createuser', bodyParser.json(),(req,res)=>{
-   let mytable= connection.db('ads').collection('interested'); 
+   let mytable= connection.db('EventsDetails').collection('interested'); 
    
    mytable.insert(req.body,(err,result)=>{
         if(!err){
@@ -116,14 +117,13 @@ app.post('/createuser', bodyParser.json(),(req,res)=>{
 //register users
 app.post('/register', bodyParser.json(), (req, res) => {
 
-    const collection = connection.db('ads').collection("users");
+    const collection = connection.db('EventsDetails').collection("Users");
 
     collection.insertOne(req.body, (err, r) => {
         //console.log("result of insert is -> " + r.ops[0]);
         console.log("result of insert is _id -> " + r.insertedId);
         if (!err) {
             res.send({ msg: "sucessfully inserted", status: 'OK', description: 'all ok' });
-
         }
         else {
             res.send({ msg: " not inserted", status: 'Failed', description: 'error in monogo db' });
@@ -131,16 +131,32 @@ app.post('/register', bodyParser.json(), (req, res) => {
 
     });
 })
+//already registerd users which is super or admin(member)
 
+app.post('/login', bodyParser.json(), (req, res) => {
+
+    const collection = connection.db('EventsDetails').collection("Users");
+
+    collection.findOne({ 'email': req.body.email, 'password': req.body.password }, 
+    (err, docs) => {
+        console.log("docs"+docs)
+        if (!err && docs) {
+        console.log(docs);
+            res.send({ msg: "sucessfully Logged In", status: 'OK', description: docs });
+        }
+        else{
+            res.send({ msg: "sucessfully Logged In", status: 'OK', description: docs });
+        }
+    });
+})
 //backend event forms
     app.get('/getevent', (req, res) => {
-    const collection = connection.db('ads').collection("workshop");
+    const collection = connection.db('EventsDetails').collection("workshop");
 
     collection.find().toArray(function (err, docs) {
 
         res.send({status:"ok", desc:docs});
     });
-
 })
 
   //upload detail of logo and banner of all events
@@ -150,7 +166,7 @@ app.post('/register', bodyParser.json(), (req, res) => {
     name: 'logo', maxCount: 1
   }]), function (req, res, next) {
         
-    const collection = connection.db('ads').collection("workshop");
+    const collection = connection.db('EventsDetails').collection("workshop");
     
      //console.log("this is request body");
         collection.insertOne({...req.body, chiefparty:[]}, (err, r) => {
@@ -176,8 +192,8 @@ app.post('/register', bodyParser.json(), (req, res) => {
     name: 'chief', maxCount: 1
   }]), function (req, res, next) {
    
-      const collection = connection.db('ads').collection("workshop");
-      //console.log(req.body);
+      const collection = connection.db('EventsDetails').collection("workshop");
+      console.log(req.body);
  
          collection.updateOne({_id:ObjectID(req.body._id)},
          { $push: { chiefparty: 
@@ -198,27 +214,6 @@ app.post('/register', bodyParser.json(), (req, res) => {
              }
          });
      })
-
-
-//already registerd users which is super or admin(member)
-
-app.post('/login', bodyParser.json(), (req, res) => {
-
-    const collection = connection.db('ads').collection("users");
-
-    collection.findOne({ 'email': req.body.email, 'password': req.body.password }, 
-    (err, docs) => {
-        console.log("docs"+docs)
-        if (!err && docs) {
-        console.log(docs);
-            res.send({ msg: "sucessfully Logged In", status: 'OK', description: docs });
-        }
-        else{
-            res.send({ msg: "sucessfully Logged In", status: 'OK', description: docs });
-        }
-    });
-})
-
 
 app.listen(3000,()=>{
     console.log("server is listening on port 3000");

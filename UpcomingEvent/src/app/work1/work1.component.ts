@@ -42,10 +42,10 @@ export class Work1Component implements OnInit {
 
           })
     })
-    this.route.queryParamMap.subscribe((d)=>{
-      this.na=d.get('name');
-      this.lo=d.get('loc');
-    })
+    //  this.route.queryParamMap.subscribe((d)=>{
+    //    this.na=d.get('name');
+    //    this.lo=d.get('loc');
+    //  })
 
   }
   fun():any{
