@@ -1,7 +1,5 @@
 <section id="contact" class="section-bg wow fadeInUp mt-5">
-
-    <div class="container">
-
+  <div class="container">
       <div class="section-header">
         <h2>Register an account</h2>
         <p>Create an account for admin and users</p>
@@ -12,90 +10,55 @@
         <form method="post" [formGroup]="rf" role="form" class="contactForm">
           <div class="form-row">
             <div class="form-group col-md-6">
-              <input type="text" name="name" formControlName="vname" [(ngModel)]="sform.name" class="form-control" id="name" placeholder="Your First Name"
-             data-rule="minlen:4" data-msg="Please enter at least 4 chars"/>
-             
+              <input type="text" name="name" formControlName="vname" [(ngModel)]="sform.name" class="form-control" id="name" placeholder="Your First Name" data-msg="Please enter at your name"/>
              <span *ngIf="rf.get('vname').invalid && rf.get('vname').touched" class="text-danger">Please Enter First Name</span>
-              <div class="validation"></div>
             </div>
             <div class="form-group col-md-6">
-              <input type="text" class="form-control" formControlName="lastname" [(ngModel)]="sform.last" name="last" 
-              id="last" placeholder="Your Last Name" />
-              
+              <input type="text" class="form-control" formControlName="lastname" [(ngModel)]="sform.last" name="last" id="last" placeholder="Your Last Name">
               <span *ngIf="rf.get('lastname').invalid && rf.get('lastname').touched"  class="text-danger">Please Enter Last Name</span>
-              
-              <div class="validation"></div>
             </div>
           </div>
-
           <div class="form-group">
-            <input type="text" class="form-control" formControlName="vmobile" [(ngModel)]="sform.mobile"
-            name="mob" id="mobile" placeholder="Your Contact Number"  minlength="10"
-             maxlength="10" pattern="^[0-9]{0,}$">
+            <input type="text" class="form-control" formControlName="vmobile" [(ngModel)]="sform.mobile" name="mob" id="mobile" placeholder="Your Contact Number"  
+            minlength="10" maxlength="10" pattern="^[0-9]{0,}$">
             <span *ngIf="rf.get('vmobile').errors && rf.get('vmobile').touched"  class="text-danger">
                   <span *ngIf="rf.get('vmobile').errors.required">Please Enter Your Contact Number</span>
                   <span *ngIf="rf.get('vmobile').errors.minlength">Contact No. should be 10 Digit Long</span>
                   <span *ngIf="rf.get('vmobile').errors.maxlenght">Contact No. should be 10 Digit Long</span>
                   <span *ngIf="rf.get('vmobile').errors.pattern">Only Numeric Digit Allow</span>
             </span>
-
-
-
-
-
-            <div class="validation"></div>
           </div>
-
           <div class="form-group">
-            <input type="email" class="form-control" formControlName="vemail" [(ngModel)]="sform.email"
-            name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
-            
-            <span *ngIf="rf.get('vemail').invalid && rf.get('vemail').touched" class="text-danger">Please Enter Email</span>
-            
-            <div class="validation"></div>
+            <input type="email" class="form-control" formControlName="vemail" [(ngModel)]="sform.email" name="email" id="email" placeholder="Your Email" data-rule="email"
+             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" data-msg="Please enter a valid email" />
+            <span *ngIf="rf.get('vemail').errors && rf.get('vemail').touched" class="text-danger">
+              <span *ngIf="rf.get('vemail').invalid && rf.get('vemail').errors.required" class="text-danger">Please Enter Email</span>
+              <span *ngIf="rf.get('vemail').errors.pattern">Not a valid format</span>
+            </span>
           </div>
-          <div class="form-row" formGroupName="passMatch">
+        <div class="form-row" formGroupName="passMatch">
           <div class="form-group col-md-6">
             <input type="password" class="form-control" formControlName="vpassword" 
-            [(ngModel)]="sform.password" name="pass"
-             id="password" placeholder="password">
-            
-            <span *ngIf="rf.get('passMatch').get('vpassword').errors" class="text-danger">
-            
+            [(ngModel)]="sform.password" name="pass" id="password" placeholder="password">
+              <span *ngIf="rf.get('passMatch').get('vpassword').errors" class="text-danger">
                 <span class="text-danger" *ngIf="rf.get('passMatch').get('vpassword').errors.required  &&
                 rf.get('passMatch').get('vpassword').touched">password is required</span>
                 <span *ngIf="rf.get('passMatch').get('vpassword').errors.minlength" class="text-danger">min length should be 6</span>
             </span> 
-            
-            <div class="validation"></div>
-
           </div>
           <div class="form-group col-md-6">
-            <input type="password" class="form-control" name="con"
-             [(ngModel)]="sform.confirm" formControlName="cPassword" data-rule="required" data-msg="" placeholder="confirm password">
-
-            <span *ngIf="rf.get('passMatch').get('cPassword').invalid  &&
-            rf.get('passMatch').get('cPassword').touched">confirm pass is required</span>
-        
-            <div class="validation"></div>
+            <input type="password" class="form-control" name="con" [(ngModel)]="sform.confirm" formControlName="cPassword" data-rule="required" data-msg="" placeholder="confirm password">
+              <span *ngIf="rf.get('passMatch').get('cPassword').invalid  && rf.get('passMatch').get('cPassword').touched">confirm pass is required</span>
           </div>
-         </div>
-         
-         <span *ngIf="rf.get('passMatch').errors">
-            password did not match
-        </span> 
-          <div class="text-center"><button type="submit" (click)="register(rf)">Get Started</button>
+        </div>
+         <span *ngIf="rf.get('passMatch').errors">password did not match</span> 
+          <div class="text-center">
+            <button type="submit" (click)="register(rf)">Get Started</button>
           </div>
-          <div class="text-center mt-1"><button type="submit" routerLink="/login">
-            Log in
-          </button>
+          <div class="text-center mt-1">
+            <button type="submit" routerLink="/login">Log in</button>
         </div>
         </form>
-      </div>
-
     </div>
-  </section><!-- #contact -->
-
-
-
-
+  </div>
+</section>
