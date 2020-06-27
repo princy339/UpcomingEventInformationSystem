@@ -12,7 +12,7 @@ export class ContactComponent implements OnInit {
   sub;
   msg;
   posts;
-  @ViewChild('ab') ab;
+  @ViewChild('ab', {static: true}) ab;
   constructor(private ds:DataService) { }
   ngOnInit() {
     this.ds.getData().subscribe((d)=>{
