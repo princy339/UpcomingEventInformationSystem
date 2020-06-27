@@ -21,7 +21,7 @@ export class SignUpComponent implements OnInit {
       vemail:['',Validators.required],
       vmobile:['',Validators.required],
       passMatch:this.fb.group({ 
-        vpassword:['',[Validators.required,Validators.minLength(6)]],
+        vpassword:['',[Validators.required,Validators.minLength(8)]],
         cPassword:['',Validators.required]
       }, {validator:this.confirmPass}
       )

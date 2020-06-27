@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { FormGroup, Validators, FormBuilder, NgForm } from '@angular/forms';
 import { DataService } from '../data.service';
 @Component({
   selector: 'app-contact',
@@ -7,6 +7,7 @@ import { DataService } from '../data.service';
   styleUrls: ['./contact.component.css']
 })
 export class ContactComponent implements OnInit {
+  // @ViewChild('ab',{static:false}) mm;
   nameIn;
   emailIn;
   sub;
@@ -15,12 +16,14 @@ export class ContactComponent implements OnInit {
   @ViewChild('ab', {static: true}) ab;
   constructor(private ds:DataService) { }
   ngOnInit() {
+    
     this.ds.getData().subscribe((d)=>{
     this.posts=d.desc;
   })
 }
 fun():any{
   //console.log({name:this.nameIn,email:this.emailIn,subject:this.sub,message:this.msg});
+   //if(this.mm.invalid){
   this.ds.sendData({name:this.nameIn,email:this.emailIn,subject:this.sub,message:this.msg})
   .subscribe((f)=>{
       if(f.status=="success"){
@@ -31,4 +34,5 @@ fun():any{
       }
     })
   }
+  //}
 }

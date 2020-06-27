@@ -39,36 +39,54 @@
         <div id="sendmessage">Your message has been sent. Thank you!</div>
         <div id="errormessage"></div>
         
-        <form #ab="ngForm" method="post" role="form" class="contactForm">
+        <form #ab="ngForm" class="contactForm">
           <div class="form-row">
             <div class="form-group col-md-6">
               <input type="text" name="name" #na="ngModel"  [(ngModel)]="nameIn" class="form-control" id="name" placeholder="Your Name"
-             data-rule="minlen:4" data-msg="Please enter at least 4 chars"/>
-             
-             <span *ngIf="na.invalid && na.touched" class="text-danger">Please Enter Name</span>
-              <div class="validation"></div>
+                data-rule="minlen:4" data-msg="Please enter at least 4 chars" required>
+                <span *ngIf="na.errors">
+                  <span *ngIf="na.touched && na.errors.required" class="text-danger">Please Enter Name</span>
+              </span>
             </div>
             <div class="form-group col-md-6">
               <input type="email" class="form-control"  #em="ngModel" name="email" [(ngModel)]="emailIn"
-              id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
-              
-              <span *ngIf="em.invalid && em.touched" class="text-danger">Please Enter Email</span>
-              
-              <div class="validation"></div>
+              id="email" placeholder="Your Email" data-rule="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+              <span *ngIf="em.errors">
+                <span *ngIf="em.touched && em.errors.required" class="text-danger">Email is required</span>
+                <span *ngIf="em.touched && em.errors.pattern" class="text-danger">Not a valid Format</span> 
+              </span>
             </div>
           </div>
           <div class="form-group">
-            <input type="text" class="form-control" #su="ngModel" name="subject" [(ngModel)]="sub" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
-            <div class="validation"></div>
+            <input type="text" class="form-control" #su="ngModel" name="subject" [(ngModel)]="sub" id="subject" placeholder="Subject" required data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+            <span *ngIf="su.errors">
+              <span *ngIf="su.touched && su.errors.required" class="text-danger">Enter Subject</span>
+          </span>
           </div>
           <div class="form-group">
-            <textarea class="form-control" name="message" #ms="ngModel" [(ngModel)]="msg" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
-            <div class="validation"></div>
+            <textarea class="form-control" name="message" #ms="ngModel" [(ngModel)]="msg" required rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+            <span *ngIf="ms.errors">
+              <span *ngIf="ms.touched && ms.errors.required" class="text-danger">Please write something for us</span>
+          </span>
           </div>
-          <div class="text-center"><button type="submit" disabled="{{ab.invalid}}" (click)="fun()">Send Message</button>
+          <div class="text-center"><button type="submit"  >Send Message</button>
         </div>
         </form>
+          complete ab : <br>
+         {{ab |json}}
+          ab errors : <br>
+         {{ab.errors |json}}
+         ab valid : <br>
+         {{ab.valid |json}} <br>
+         values are <br>
+         {{ab.value|json}}
       </div>
-
     </div>
   </section><!-- #contact -->
+
+
+  <form #fff="ngForm">
+    <input type="text"  name="test" ngModel>
+  </form>
+  Last Form
+  {{fff|json}}
