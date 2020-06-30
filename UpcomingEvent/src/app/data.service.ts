@@ -44,6 +44,10 @@ export class DataService {
   
   return this.http.post("http://localhost:3000/updateevent",d);
   }
+  deleteEvent(f):any
+  {
+  return this.http.post("http://localhost:3000/deleteevent",{id:f});
+  }
  
   getUser():any{
     return this.http.get("http://localhost:3000/getuser");

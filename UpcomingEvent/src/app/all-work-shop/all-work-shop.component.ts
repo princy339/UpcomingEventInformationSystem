@@ -56,6 +56,22 @@ fun(id):any{
           }
         });
       }
+  delete(p)
+  {
+    this.ds.deleteEvent(p).subscribe((d)=>{
+      if(d.status=="success")
+      {
+        alert("data is deleted"); 
+        this.ds.getEvents().subscribe((d)=>{
+          this.details=d.desc;
+        })
+      }
+      else
+      {
+        alert("gadbad ho gyi")
+      }
+    });
+  }
     
 
 }

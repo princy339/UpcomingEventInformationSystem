@@ -175,7 +175,20 @@ app.post('/updateevent', bodyParser.json(),(req,res)=>{
             }
         })
     });
+// for delete an event
+    app.post('/deleteevent', bodyParser.json(),(req,res)=>{
+   
 
+        let collection= connection.db('EventsDetails').collection('workshop'); 
+        collection.remove(req.body,(err,result)=>{
+            if(!err){
+                res.send({status:"success",desc:"event deleted successfully"});
+            }
+            else{
+                res.send({status:"failed",desc:"some error occured"});
+            }
+        })
+    });
 
   //upload detail of logo and banner of all events
  app.post('/createevent',upload.fields([{

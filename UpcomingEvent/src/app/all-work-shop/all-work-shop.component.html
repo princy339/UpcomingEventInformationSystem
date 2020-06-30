@@ -31,8 +31,9 @@
                           <button class="btn btn-danger m-1"  (click)="fun1(p._id)" > More Detail</button>
                           <button class="btn btn-success"  (click)="update(p)" data-toggle="modal"
                            data-target="#myModal"><i class="fas fa-pen"></i> </button>
-                           <button class="btn btn-danger"  (click)="delete(p)" data-toggle="modal">
-                             <i class="fa fa-trash"></i> </button>
+                           <button class=" ml-1 btn btn-warning"  (click)="delete(p._id)">
+                             <i class="fa fa-trash"></i></button>
+                             
                         </span>
                     </td>
                 </tr>
