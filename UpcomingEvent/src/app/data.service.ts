@@ -39,6 +39,11 @@ export class DataService {
     //alert(JSON.stringify);
     return this.http.get("http://localhost:3000/getevent");
   }
+  updateEvent(d):any
+  {
+  
+  return this.http.post("http://localhost:3000/updateevent",d);
+  }
  
   getUser():any{
     return this.http.get("http://localhost:3000/getuser");

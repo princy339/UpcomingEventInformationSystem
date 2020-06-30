@@ -33,7 +33,8 @@ export class AddWorkshopComponent implements OnInit {
      formdata.set('time', this.cForm.time);
       //console.log(formdata.get('name')); console.log(formdata.get('fulladdress'));
      this.ds.addWorkshop(formdata).subscribe(data => {
-       //alert('create event status is ' + data.status); console.log(data);
+      // alert('create event status is ' + data.status); console.log(data);
+      alert("event is added");
     });
   }
 ngOnInit() {

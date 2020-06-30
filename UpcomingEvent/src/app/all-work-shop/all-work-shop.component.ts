@@ -10,11 +10,11 @@ import { DataService } from '../data.service';
 export class AllWorkShopComponent implements OnInit {
   details;
   id;
+  eventToBeUpdated;
   constructor(private ds: DataService,private router:Router,private route:ActivatedRoute) { }
   ngOnInit() {
       this.ds.getEvents().subscribe((d)=>{
       this.details=d.desc;
-
 
 // check if it is member or admin
         if(!(localStorage.getItem('role')=="admin"))
@@ -23,10 +23,7 @@ export class AllWorkShopComponent implements OnInit {
               return pp.email == localStorage.getItem('email');
             });
         }
-      
-
-})
-
+      })
 }
 
 fun(id):any{
@@ -37,5 +34,28 @@ fun(id):any{
       //alert(id);
       this.router.navigate(['/dashboard/detail'],{queryParams:{id:id}});
       } 
+      
+      update(f):any
+      {
+          this.eventToBeUpdated=f;
+      }
+    updateConfirm()
+      {
+        this.ds.updateEvent(this.eventToBeUpdated).subscribe((d)=>{
+          if(d.status=="success")
+          {
+            alert("data updated");
+
+            this.ds.getEvents().subscribe((d)=>{
+              this.details=d.desc;
+            })
+        }
+          else
+          {
+            alert("Data is not updated")
+          }
+        });
+      }
+    
 
 }
