@@ -28,9 +28,11 @@
                     <td>
                         <span class="row">
                           <button data-target="#login" (click)="fun(p._id)" class="btn btn-info m-1" data-toggle="modal">Interested</button>
-                          <button class="btn btn-danger m-1"  (click)="fun1(p._id)" >Detail</button>
+                          <button class="btn btn-danger m-1"  (click)="fun1(p._id)" > More Detail</button>
                           <button class="btn btn-success"  (click)="update(p)" data-toggle="modal"
-                           style="font-size:2px" data-target="#myModal"><i class="material-icons">mode_edit</i> </button>
+                           data-target="#myModal"><i class="fas fa-pen"></i> </button>
+                           <button class="btn btn-danger"  (click)="delete(p)" data-toggle="modal">
+                             <i class="fa fa-trash"></i> </button>
                         </span>
                     </td>
                 </tr>
