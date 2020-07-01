@@ -178,9 +178,9 @@ app.post('/updateevent', bodyParser.json(),(req,res)=>{
 // for delete an event
     app.post('/deleteevent', bodyParser.json(),(req,res)=>{
    
-
+    console.log(req.body);
         let collection= connection.db('EventsDetails').collection('workshop'); 
-        collection.remove(req.body,(err,result)=>{
+        collection.remove({_id:ObjectID(req.body.id)},(err,result)=>{
             if(!err){
                 res.send({status:"success",desc:"event deleted successfully"});
             }
