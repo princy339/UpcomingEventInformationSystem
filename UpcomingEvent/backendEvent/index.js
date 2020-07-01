@@ -6,7 +6,7 @@ const MongoClient = require('mongodb').MongoClient;
 const ObjectID = require('mongodb').ObjectID;
 var multer = require('multer');
 var fs = require('fs');
-
+var nodemailer = require('nodemailer');
 
 // let client = new MongoClient('mongodb://localhost:27017/ads',{useNewUrlParser:true});
     let client = new MongoClient('mongodb+srv://admin_123:admin_123@cluster0-peafg.mongodb.net/EventsDetails?retryWrites=true&w=majority' ,{useNewUrlParser:true});
@@ -149,6 +149,8 @@ app.post('/login', bodyParser.json(), (req, res) => {
         }
     });
 })
+// for send a mail
+
 //backend event forms
     app.get('/getevent', (req, res) => {
     const collection = connection.db('EventsDetails').collection("workshop");
