@@ -15,7 +15,7 @@
                             <h2 class="text-danger mt-3 font-weight-bold text-uppercase">Add New Event</h2>
                         </div>
                         <div class="col-lg-8 font-weight-bold">
-                            <form role="form" #createWorkshop="ngForm">
+                            <form role="form" #createWorkshop="ngForm" >
                                 <div class="form-group mt-3">
                                     <label>Type</label>
                                     <select name="type"  [(ngModel)]="cForm.type" class="form-control" required>
@@ -91,3 +91,5 @@
         </div>
         <!-- /.col-lg-12 -->
     </div>
+<!-- 
+    {{createWorkshop|json}} -->

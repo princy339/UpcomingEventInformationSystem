@@ -18,7 +18,7 @@ export class ContactQueryComponent implements OnInit {
 
  update(p)
   {
-      this.customerToBeUpdated=p;
+      this.customerToBeUpdated={...p};
   }
 updateConfirm()
   {

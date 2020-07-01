@@ -73,7 +73,7 @@ var fs = require('fs');
    
         console.log(req.body);
             let mytable= connection.db('EventsDetails').collection('contact'); 
-            mytable.update({_id:ObjectId(req.body._id)},{$set:{name:req.body.name,
+            mytable.update({_id:ObjectID(req.body._id)},{$set:{name:req.body.name,
                   email:req.body.email,subject:req.body.subject, message:req.body.message }},
                  (err,result)=>{
                 if(!err){
