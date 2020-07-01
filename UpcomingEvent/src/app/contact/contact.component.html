@@ -39,7 +39,7 @@
         <div id="sendmessage">Your message has been sent. Thank you!</div>
         <div id="errormessage"></div>
         
-        <form #ab="ngForm" method="post" role="form" class="contactForm">
+        <form #ab="ngForm" class="contactForm">
           <div class="form-row">
             <div class="form-group col-md-6">
               <input type="text" name="name" #na="ngModel"  [(ngModel)]="nameIn" class="form-control" id="name" placeholder="Your Name"
@@ -72,6 +72,22 @@
           <div class="text-center"><button type="submit"  (click)="fun()">Send Message</button>
         </div>
         </form>
+          complete ab : <br>
+         {{ab |json}}
+          ab errors : <br>
+         {{ab.errors |json}}
+         ab valid : <br>
+         {{ab.valid |json}} <br>
+         values are <br>
+         {{ab.value|json}}
       </div>
     </div>
   </section><!-- #contact -->
+
+<!-- 
+  <form #fff="ngForm">
+    <input type="text"  name="test" ngModel required>
+    <button [disabled]="fff.form.valid">click me</button>
+  </form>
+  Last Form
+  {{fff|json}} -->

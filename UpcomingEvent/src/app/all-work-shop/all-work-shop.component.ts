@@ -64,6 +64,13 @@ fun(id):any{
         alert("data is deleted"); 
         this.ds.getEvents().subscribe((d)=>{
           this.details=d.desc;
+          if(!(localStorage.getItem('role')=="admin"))
+          {
+              this.details = this.details.filter((pp)=>{
+                return pp.email == localStorage.getItem('email');
+              });
+          }
+
         })
       }
       else

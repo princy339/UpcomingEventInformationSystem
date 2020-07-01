@@ -123,6 +123,14 @@ app.post('/register', bodyParser.json(), (req, res) => {
         //console.log("result of insert is -> " + r.ops[0]);
         console.log("result of insert is _id -> " + r.insertedId);
         if (!err) {
+
+
+
+            sendMail("Theevents.27@gmail.com", "mfvhcxlejtkrjodz" , req.body.email, "Registration SuccessFull", `<h3>Hi</h3><br><h6> Welcome to Upcommming Events` );
+
+
+
+
             res.send({ msg: "sucessfully inserted", status: 'OK', description: 'all ok' });
         }
         else {
@@ -180,9 +188,9 @@ app.post('/updateevent', bodyParser.json(),(req,res)=>{
 // for delete an event
     app.post('/deleteevent', bodyParser.json(),(req,res)=>{
    
-
+    console.log(req.body);
         let collection= connection.db('EventsDetails').collection('workshop'); 
-        collection.remove(req.body,(err,result)=>{
+        collection.remove({_id:ObjectID(req.body.id)},(err,result)=>{
             if(!err){
                 res.send({status:"success",desc:"event deleted successfully"});
             }
@@ -247,6 +255,54 @@ app.post('/updateevent', bodyParser.json(),(req,res)=>{
              }
          });
      })
+
+
+ 
+
+
+     function sendMail(from, appPassword, to, subject,  htmlmsg)
+     {
+         let transporter=nodemailer.createTransport(
+             {
+                 host:"smtp.gmail.com",
+                 port:587,
+                 secure:false,
+                 auth:
+                 {
+                  //  user:"weforwomen01@gmail.com",
+                  //  pass:""
+                  user:from,
+                   pass:appPassword
+                   
+         
+                 }
+             }
+           );
+         let mailOptions=
+         {
+            from:from ,
+            to:to,
+            subject:subject,
+            html:htmlmsg
+         };
+         transporter.sendMail(mailOptions ,function(error,info)
+         {
+           if(error)
+           {
+             console.log(error);
+           }
+           else
+           {
+             console.log('Email sent:'+info.response);
+           }
+         });
+     }
+     
+    
+
+
+
+
 
 app.listen(3000,()=>{
     console.log("server is listening on port 3000");
