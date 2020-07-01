@@ -7,7 +7,7 @@ import { DataService } from '../data.service';
   styleUrls: ['./contact.component.css']
 })
 export class ContactComponent implements OnInit {
-  // @ViewChild('ab',{static:false}) mm;
+  //  @ViewChild('ab',{static:false}) mm;
   nameIn;
   emailIn;
   sub;

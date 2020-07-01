@@ -158,6 +158,37 @@ app.post('/login', bodyParser.json(), (req, res) => {
         res.send({status:"ok", desc:docs});
     });
 })
+//for update event details
+app.post('/updateevent', bodyParser.json(),(req,res)=>{
+   
+    console.log(req.body);
+        let collection= connection.db('EventsDetails').collection('workshop'); 
+        collection.update({_id:ObjectID(req.body._id)},{$set:{type:req.body.type,
+              title:req.body.title,date:req.body.date, time:req.body.time,
+               location:req.body.location, logo:req.body.logo }},
+             (err,result)=>{
+            if(!err){
+                res.send({status:"success",desc:"event updated successfully"});
+            }
+            else{
+                res.send({status:"failed",desc:"some error occured"});
+            }
+        })
+    });
+// for delete an event
+    app.post('/deleteevent', bodyParser.json(),(req,res)=>{
+   
+
+        let collection= connection.db('EventsDetails').collection('workshop'); 
+        collection.remove(req.body,(err,result)=>{
+            if(!err){
+                res.send({status:"success",desc:"event deleted successfully"});
+            }
+            else{
+                res.send({status:"failed",desc:"some error occured"});
+            }
+        })
+    });
 
   //upload detail of logo and banner of all events
  app.post('/createevent',upload.fields([{
