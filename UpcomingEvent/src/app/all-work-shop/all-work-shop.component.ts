@@ -75,7 +75,7 @@ fun(id):any{
       }
       else
       {
-        alert("gadbad ho gyi")
+        alert("Data is not deleted");
       }
     });
   }

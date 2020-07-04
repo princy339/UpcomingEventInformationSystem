@@ -123,14 +123,7 @@ app.post('/register', bodyParser.json(), (req, res) => {
         //console.log("result of insert is -> " + r.ops[0]);
         console.log("result of insert is _id -> " + r.insertedId);
         if (!err) {
-
-
-
-            sendMail("Theevents.27@gmail.com", "mfvhcxlejtkrjodz" , req.body.email, "Registration SuccessFull", `<h3>Hi</h3><br><h6> Welcome to Upcommming Events` );
-
-
-
-
+            sendMail("Theevents.27@gmail.com", "mfvhcxlejtkrjodz" , req.body.email, "Registration SuccessFul", `<h3>Hi</h3><br><h6>Welcome to The Events`);
             res.send({ msg: "sucessfully inserted", status: 'OK', description: 'all ok' });
         }
         else {
@@ -157,7 +150,6 @@ app.post('/login', bodyParser.json(), (req, res) => {
         }
     });
 })
-// for send a mail
 
 //backend event forms
     app.get('/getevent', (req, res) => {
@@ -172,11 +164,14 @@ app.post('/login', bodyParser.json(), (req, res) => {
 app.post('/updateevent', bodyParser.json(),(req,res)=>{
    
     console.log(req.body);
-        let collection= connection.db('EventsDetails').collection('workshop'); 
+        
+    let collection= connection.db('EventsDetails').collection('workshop'); 
+        
         collection.update({_id:ObjectID(req.body._id)},{$set:{type:req.body.type,
               title:req.body.title,date:req.body.date, time:req.body.time,
-               location:req.body.location, logo:req.body.logo }},
+               location:req.body.location}},
              (err,result)=>{
+
             if(!err){
                 res.send({status:"success",desc:"event updated successfully"});
             }
@@ -185,6 +180,36 @@ app.post('/updateevent', bodyParser.json(),(req,res)=>{
             }
         })
     });
+// fro update all details in event include logo and banner also
+app.post('/updateallevent',upload.fields([{
+    name: 'banner', maxCount: 1
+  }, {
+    name: 'logo', maxCount: 1
+  }]), function (req, res, next) {
+        
+    const collection = connection.db('EventsDetails').collection("workshop"); 
+        // console.log(req.body); 
+        collection.update({_id:ObjectID(req.body._id)},{$set:{type:req.body.type,
+              title:req.body.title,date:req.body.date, time:req.body.time,
+               location:req.body.location,latitude:req.body.latitude,longitude:req.body.longitude,
+               fulladdress:req.body.fulladdress,description:req.body.description}},
+               (err,r)=>{
+                
+                if (!err) {
+                   
+                    console.log("result of update is _id -> " + r.updatedId);
+                    fs.renameSync('./uploads/logo.jpg', './uploads/logo_'+r.updatedId + '.jpg');
+                     fs.renameSync('./uploads/banner.jpg', './uploads/banner_'+r.updatedId + '.jpg');
+                     
+        
+                     res.send({ msg: "event sucessfully updated", status: 'OK', description: 'event updated and file updated' });
+              }
+                 else {
+                    res.send({ msg: "event is not updated", status: 'FAIL', description: err });
+        
+                 }
+            });
+    })
 // for delete an event
     app.post('/deleteevent', bodyParser.json(),(req,res)=>{
    
@@ -199,6 +224,19 @@ app.post('/updateevent', bodyParser.json(),(req,res)=>{
             }
         })
     });
+    app.post('/deletemoredetail', bodyParser.json(),(req,res)=>{
+   
+        console.log(req.body);
+            let collection= connection.db('EventsDetails').collection('workshop'); 
+            collection.remove(req.body,(err,result)=>{
+                if(!err){
+                    res.send({status:"success",desc:"event deleted successfully"});
+                }
+                else{
+                    res.send({status:"failed",desc:"some error occured"});
+                }
+            })
+        });
 
   //upload detail of logo and banner of all events
  app.post('/createevent',upload.fields([{
@@ -208,15 +246,11 @@ app.post('/updateevent', bodyParser.json(),(req,res)=>{
   }]), function (req, res, next) {
         
     const collection = connection.db('EventsDetails').collection("workshop");
-    
-     //console.log("this is request body");
+    // console.log("this is request body");
         collection.insertOne({...req.body, chiefparty:[]}, (err, r) => {
-    
             if (!err) {
-    
                  //console.log("result of insert is -> " +r.ops[0]);
                  //console.log("result of insert is _id -> " + r.insertedId);
-    
                  fs.renameSync('./uploads/banner.jpg', './uploads/banner_'+r.insertedId + '.jpg');
                  fs.renameSync('./uploads/logo.jpg', './uploads/logo_'+r.insertedId + '.jpg');
     
@@ -255,12 +289,8 @@ app.post('/updateevent', bodyParser.json(),(req,res)=>{
              }
          });
      })
-
-
- 
-
-
-     function sendMail(from, appPassword, to, subject,  htmlmsg)
+//send a mail to user
+    function sendMail(from, appPassword, to, subject,  htmlmsg)
      {
          let transporter=nodemailer.createTransport(
              {

@@ -31,13 +31,20 @@ export class MoredetailComponent implements OnInit {
     formdata.set('count', p[0].chiefparty.length);
     //alert(JSON.stringify(p[0].chiefparty.length));
     this.ds.addChief(formdata).subscribe(data => {
-     // alert('create event status is ' + data.status);
-      //console.log(data);
+     //alert('create event status is ' + data.status);
+     alert("Details are successfully added"); 
+     //console.log(data);
    });
  }
   ngOnInit() {
     this.ds.getEvents().subscribe((p)=>{
       this.events = p.desc;
+      if(!(localStorage.getItem('role')=="admin"))
+      {
+          this.events = this.events.filter((ss)=>{
+            return ss.email == localStorage.getItem('email');
+          });
+      }
     })
   }
 }

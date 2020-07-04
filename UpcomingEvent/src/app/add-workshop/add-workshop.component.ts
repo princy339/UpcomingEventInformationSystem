@@ -14,8 +14,11 @@ export class AddWorkshopComponent implements OnInit {
   constructor(private ds: DataService) { }
   getFile(evnt: any) {
     // console.log(evnt);
-     this.banner = evnt.target.files[0];
+    
       this.logo = evnt.target.files[0];
+  }
+  getFile1(evnt: any){
+  this.banner = evnt.target.files[0];
   }
    addWorkshop(){
      const formdata = new FormData();
