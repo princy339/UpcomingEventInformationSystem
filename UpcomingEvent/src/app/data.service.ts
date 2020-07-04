@@ -58,7 +58,7 @@ export class DataService {
   }
   
   deleteMoredetail(g):any{
-  return this.http.post("http://localhost:3000/deletemoredetail",g);
+  return this.http.post("http://localhost:3000/deletemoredetail",{id:g});
   }
  
   getUser():any{
