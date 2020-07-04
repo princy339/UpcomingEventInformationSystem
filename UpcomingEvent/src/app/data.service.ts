@@ -45,10 +45,11 @@ export class DataService {
   return this.http.post("http://localhost:3000/updateevent",d);
   }
 
-  updateallEvent(d):any
+  updateallEvent(formdata: FormData):any
   {
-  alert(JSON.stringify(d));
-  return this.http.post("http://localhost:3000/updateallevent",d);
+  // alert(JSON.stringify(formdata));
+
+  return this.http.post("http://localhost:3000/updateallevent",formdata);
   }
 
   

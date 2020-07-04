@@ -185,7 +185,7 @@
                         <div class="form-row">
                             <div class="col-lg-12">
                                 <label for="logo">Logo</label>
-                                <input type="file"  name="logo" class="form-control" required>
+                                <input type="file"  name="logo" (change)="updateFile($event)" class="form-control" required>
                                 <img src="http://localhost:3000/logo_{{details[0]._id}}.jpg" 
                                 height="100px;" width="100px;">
                             </div>
@@ -195,7 +195,7 @@
                         <div class="form-row">
                             <div class="col-lg-12">
                                 <label>Banner</label>
-                                <input type="file"  name="banner" class="form-control" required>
+                                <input type="file"  name="banner" (change)="updateFile1($event)" class="form-control" required>
                                 <img src="http://localhost:3000/banner_{{details[0]._id}}.jpg" 
                                 height="100px;" width="100px;">                              
                             </div>

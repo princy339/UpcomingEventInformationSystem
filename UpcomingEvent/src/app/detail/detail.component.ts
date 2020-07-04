@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { ActivatedRoute } from '@angular/router';
+import { createWorkshop } from '../Models/createWorkshop.model';
 
 @Component({
   selector: 'app-detail',
@@ -10,10 +11,17 @@ import { ActivatedRoute } from '@angular/router';
 export class DetailComponent implements OnInit {
   details;
   id;
-  
+  banner: any;
+  logo:any;
+  cForm = new createWorkshop();
   eventToBeUpdated;
-  constructor(private ds:DataService,private route:ActivatedRoute) { }
-  
+  constructor(private ds:DataService, private route:ActivatedRoute) { }
+  updateFile(evnt: any) { 
+  this.logo = evnt.target.files[0]; 
+  }
+  updateFile1(evnt: any){
+  this.banner = evnt.target.files[0];
+  }
   ngOnInit() {
     this.route.queryParamMap.subscribe((p)=>{
       this.id=p.get('id');
@@ -36,12 +44,25 @@ update(f):any
       }
     updateConfirm()
       {
-        
-        this.ds.updateallEvent(this.eventToBeUpdated).subscribe((d)=>{
-          // alert("response is coming here from api");
+          const formdata = new FormData();
+          formdata.set('banner', this.banner);
+          formdata.set('logo', this.logo);
+          formdata.set('type', this.cForm.type);
+          formdata.set('title', this.cForm.title);
+          formdata.set('date', this.cForm.date + '');
+          formdata.set('location', this.cForm.location);
+          formdata.set('fulladdress', this.cForm.fulladdress);
+          formdata.set('latitude', this.cForm.latitude);
+          formdata.set('longitude', this.cForm.longitude);
+          formdata.set('description', this.cForm.describe);
+          formdata.set('email', localStorage.getItem('email'));
+          formdata.set('time', this.cForm.time);
+         
+        alert("details is going to server"); //this is working
+       this.ds.updateallEvent(formdata).subscribe((d)=>{  //this.eventToBeUpdated
           if(d.status=="success")
           {
-            alert("Your event is  updated");
+            alert("detail is coming from server"); //but this is not working
 
             this.ds.getEvents().subscribe((d)=>{
               this.details=d.desc;
@@ -49,7 +70,7 @@ update(f):any
         }
           else
           {
-            alert("Event is not updated")
+            alert("Event is not updated"); //this is working, it means d.status is not success.
           }
         });
       }
