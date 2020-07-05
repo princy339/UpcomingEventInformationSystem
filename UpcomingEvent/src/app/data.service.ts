@@ -47,7 +47,8 @@ export class DataService {
 
   updateallEvent(formdata: FormData):any
   {
-    alert(JSON.stringify(formdata));
+    console.log("this is formdata detail");
+    console.log(formdata);
 
   return this.http.post("http://localhost:3000/updateallevent",formdata);
   }
