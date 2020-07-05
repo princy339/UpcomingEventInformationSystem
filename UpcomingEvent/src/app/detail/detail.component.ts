@@ -43,8 +43,7 @@ update(f):any
     updateConfirm()
       {
           const formdata = new FormData();
-          formdata.set('banner', this.banner);
-          formdata.set('logo', this.logo);
+          
           formdata.set('type', this.eventToBeUpdated.type);
           formdata.set('title', this.eventToBeUpdated.title);
           formdata.set('date', this.eventToBeUpdated.date+ '');
@@ -55,11 +54,14 @@ update(f):any
           formdata.set('description', this.eventToBeUpdated.description);
           formdata.set('email', localStorage.getItem('email'));
           formdata.set('time', this.eventToBeUpdated.time);
+          alert(this.eventToBeUpdated._id);
+          formdata.set('_id', this.eventToBeUpdated._id);
+          formdata.set('banner', this.banner);
+          formdata.set('logo', this.logo);
          
         alert("details is going to server"); //this is working
        this.ds.updateallEvent(formdata).subscribe((response)=>{  //this.eventToBeUpdated
-          
-        if(response.status=="success")
+        if(response.status=="OK")
           {
             alert("detail is coming from server"); //but this is not working
 

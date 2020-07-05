@@ -198,13 +198,13 @@ app.post('/updateallevent',upload.fields([{
                 if (!err) {
                     
                     console.log("result of update is _id -> " + r._id);
-                    fs.renameSync('./uploads/banner.jpg', './uploads/banner_'+r._id + '.jpg');
-                    fs.renameSync('./uploads/logo.jpg', './uploads/logo_'+r._id + '.jpg'); 
+                    fs.renameSync('./uploads/banner.jpg', './uploads/banner_'+req.body._id + '.jpg');
+                    fs.renameSync('./uploads/logo.jpg', './uploads/logo_'+req.body._id + '.jpg');
         
                      res.send({ msg: "event sucessfully updated", status: 'OK', description: 'event updated and file updated' });
               }
                  else {
-                    res.send({ msg: "event is not updated", status: 'FAIL', description: err });
+                     res.send({ msg: "event is not updated", status: 'FAIL', description: err });
         
                  }
             });
