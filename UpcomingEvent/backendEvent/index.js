@@ -188,7 +188,7 @@ app.post('/updateallevent',upload.fields([{
   }]), function (req, res, next) {
         
     const collection = connection.db('EventsDetails').collection("workshop"); 
-        // console.log(req.body); 
+        console.log(req.body); 
         collection.update({_id:ObjectID(req.body._id)},{$set:{type:req.body.type,
               title:req.body.title,date:req.body.date, time:req.body.time,
                location:req.body.location,latitude:req.body.latitude,longitude:req.body.longitude,
@@ -196,11 +196,10 @@ app.post('/updateallevent',upload.fields([{
                (err,r)=>{
                 
                 if (!err) {
-                   
-                    console.log("result of update is _id -> " + r.updatedId);
-                    fs.renameSync('./uploads/logo.jpg', './uploads/logo_'+r.updatedId + '.jpg');
-                     fs.renameSync('./uploads/banner.jpg', './uploads/banner_'+r.updatedId + '.jpg');
-                     
+                    
+                    console.log("result of update is _id -> " + r._id);
+                    fs.renameSync('./uploads/banner.jpg', './uploads/banner_'+r._id + '.jpg');
+                    fs.renameSync('./uploads/logo.jpg', './uploads/logo_'+r._id + '.jpg'); 
         
                      res.send({ msg: "event sucessfully updated", status: 'OK', description: 'event updated and file updated' });
               }

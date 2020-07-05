@@ -147,29 +147,25 @@
                       <div class="form-row">
                             <div class="col-lg-12">
                                 <label for="location">Location</label>
-                                <textarea name="location"  class="form-control"  placeholder=
-                                "update location" required [(ngModel)]="eventToBeUpdated.location"></textarea>                       
+                                <textarea name="location"  class="form-control"  placeholder="update location" required [(ngModel)]="eventToBeUpdated.location"></textarea>                       
                             </div>
                         </div>
                     </div>
                    <div class="form-group" class="row">
                         <div class="col-lg-6">
                             <label>Please enter Latitude of location</label>
-                            <input name="latitude" type="text" [(ngModel)]="eventToBeUpdated.
-                            latitude" class="form-control" required>
+                            <input name="latitude" type="text" [(ngModel)]="eventToBeUpdated.latitude" class="form-control" required>
                         </div>
                         <div class="col-lg-6">
                             <label>Please enter Longitude of location</label>
-                            <input name="longitude" type="text" [(ngModel)]="eventToBeUpdated.
-                            longitude" class="form-control" required>
+                            <input name="longitude" type="text" [(ngModel)]="eventToBeUpdated.longitude" class="form-control" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="form-row">
                             <div class="col-lg-12">
                                 <label>Full Address</label>
-                                <textarea  name="fulladdress" class="form-control" [(ngModel)]=
-                                "eventToBeUpdated.fulladdress"  placeholder="Enter text" required></textarea>
+                                <textarea  name="fulladdress" class="form-control" [(ngModel)]="eventToBeUpdated.fulladdress"  placeholder="Enter text" required></textarea>
                             </div>
                         </div>
                     </div>
@@ -186,8 +182,7 @@
                             <div class="col-lg-12">
                                 <label for="logo">Logo</label>
                                 <input type="file"  name="logo" (change)="updateFile($event)" class="form-control" required>
-                                <img src="http://localhost:3000/logo_{{details[0]._id}}.jpg" 
-                                height="100px;" width="100px;">
+                                <img src="http://localhost:3000/logo_{{details[0]._id}}.jpg" height="100px;" width="100px;">
                             </div>
                         </div>
                     </div>
@@ -196,8 +191,7 @@
                             <div class="col-lg-12">
                                 <label>Banner</label>
                                 <input type="file"  name="banner" (change)="updateFile1($event)" class="form-control" required>
-                                <img src="http://localhost:3000/banner_{{details[0]._id}}.jpg" 
-                                height="100px;" width="100px;">                              
+                                <img src="http://localhost:3000/banner_{{details[0]._id}}.jpg" height="100px;" width="100px;">                              
                             </div>
                         </div>
                     </div>

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { ActivatedRoute } from '@angular/router';
-import { createWorkshop } from '../Models/createWorkshop.model';
 
 @Component({
   selector: 'app-detail',
@@ -13,7 +12,6 @@ export class DetailComponent implements OnInit {
   id;
   banner: any;
   logo:any;
-  cForm = new createWorkshop();
   eventToBeUpdated;
   constructor(private ds:DataService, private route:ActivatedRoute) { }
   updateFile(evnt: any) { 
@@ -47,20 +45,20 @@ update(f):any
           const formdata = new FormData();
           formdata.set('banner', this.banner);
           formdata.set('logo', this.logo);
-          formdata.set('type', this.cForm.type);
-          formdata.set('title', this.cForm.title);
-          formdata.set('date', this.cForm.date + '');
-          formdata.set('location', this.cForm.location);
-          formdata.set('fulladdress', this.cForm.fulladdress);
-          formdata.set('latitude', this.cForm.latitude);
-          formdata.set('longitude', this.cForm.longitude);
-          formdata.set('description', this.cForm.describe);
+          formdata.set('type', this.eventToBeUpdated.type);
+          formdata.set('title', this.eventToBeUpdated.title);
+          formdata.set('date', this.eventToBeUpdated.date+ '');
+          formdata.set('location', this.eventToBeUpdated.location);
+          formdata.set('fulladdress', this.eventToBeUpdated.fulladdress);
+          formdata.set('latitude', this.eventToBeUpdated.latitude);
+          formdata.set('longitude', this.eventToBeUpdated.longitude);
+          formdata.set('description', this.eventToBeUpdated.description);
           formdata.set('email', localStorage.getItem('email'));
-          formdata.set('time', this.cForm.time);
+          formdata.set('time', this.eventToBeUpdated.time);
          
         alert("details is going to server"); //this is working
-       this.ds.updateallEvent(formdata).subscribe((d)=>{  //this.eventToBeUpdated
-          if(d.status=="success")
+       this.ds.updateallEvent(formdata).subscribe((response)=>{  //this.eventToBeUpdated
+          if(response.status=="success")
           {
             alert("detail is coming from server"); //but this is not working
 
