@@ -58,7 +58,8 @@ update(f):any
          
         alert("details is going to server"); //this is working
        this.ds.updateallEvent(formdata).subscribe((response)=>{  //this.eventToBeUpdated
-          if(response.status=="success")
+          
+        if(response.status=="success")
           {
             alert("detail is coming from server"); //but this is not working
 
@@ -79,7 +80,8 @@ update(f):any
     this.ds.deleteMoredetail(p).subscribe((d)=>{
       if(d.status=="success")
       {
-        alert("data is deleted"); 
+        
+        alert("speaker details are deleted"); 
         this.ds.getEvents().subscribe((d)=>{
           this.details=d.desc;
 
@@ -87,7 +89,7 @@ update(f):any
       }
       else
       {
-        alert("Data is not deleted");
+        alert("speaker details are not deleted");
       }
     });
   }  

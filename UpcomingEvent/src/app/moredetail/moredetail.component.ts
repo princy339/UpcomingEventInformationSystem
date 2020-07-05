@@ -26,13 +26,11 @@ export class MoredetailComponent implements OnInit {
     formdata.set('_id', this.cForm.type);
     formdata.set('speaker', this.cForm.speaker);
     formdata.set('description', this.cForm.description);
-
-    
     formdata.set('count', p[0].chiefparty.length);
     //alert(JSON.stringify(p[0].chiefparty.length));
     this.ds.addChief(formdata).subscribe(data => {
      //alert('create event status is ' + data.status);
-     alert("Details are successfully added"); 
+     alert("Speaker Details are successfully added"); 
      //console.log(data);
    });
  }

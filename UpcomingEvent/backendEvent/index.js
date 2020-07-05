@@ -224,18 +224,25 @@ app.post('/updateallevent',upload.fields([{
         })
     });
 // for delete more details 
-    app.post('/deletemoredetail', bodyParser.json(),(req,res)=>{
-   
-       // console.log(req.body);
-            let collection= connection.db('EventsDetails').collection('workshop'); 
-            collection.remove({_id:ObjectID(req.body.id)},(err,result)=>{
-                if(!err){
-                    res.send({status:"success",desc:"event deleted successfully"});
-                }
-                else{
-                    res.send({status:"failed",desc:"some error occured"});
-                }
-            })
+app.post('/deletemoredetail',upload.fields([{
+    name: 'chief', maxCount: 1
+}]), function (req, res, next) {
+           
+        const collection = connection.db('EventsDetails').collection("workshop");
+            console.log(req.body);
+                collection.remove({_id:ObjectID(req.body.id)},
+                { $pop: { chiefparty: 
+                    {speaker:req.body.speaker,count:req.body.count, description:req.body.description}
+                    }
+                 }, (err,result)=>{
+
+                    if(!err){
+                        res.send({status:"success",desc:"speaker details are deleted successfully"});
+                    }
+                    else{
+                        res.send({status:"failed",desc:"some error occured"});
+                    }
+                })
         });
 
   //upload detail of logo and banner of all events
