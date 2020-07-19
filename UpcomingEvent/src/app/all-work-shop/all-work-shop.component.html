@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" >
     <div class="row">
     <div class="col-lg-12">
         <div class="panel panel-default">
@@ -28,10 +28,10 @@
                     <td>
                         <span class="row">
                           <button data-target="#login" (click)="fun(p._id)" class="btn btn-info m-1" data-toggle="modal">Interested</button>
-                          <button class="btn btn-danger m-1"  (click)="fun1(p._id)" > More Detail</button>
-                          <button class="btn btn-success"  (click)="update(p)" data-toggle="modal"
-                           data-target="#myModal"><i class="fas fa-pen"></i> </button>
-                           <button class=" ml-1 btn btn-warning"  (click)="delete(p._id)">
+                          <button class="btn btn-danger m-1"  (click)="fun1(p._id)" >Detail</button>
+                          <button class="m-1 btn" (click)="update(p)" 
+                           data-target="#myModal"><i class="fa fa-edit"></i> </button>
+                           <button class=" btn m-1"  (click)="delete(p._id)">
                              <i class="fa fa-trash"></i></button>
                              
                         </span>

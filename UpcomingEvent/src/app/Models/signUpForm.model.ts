@@ -1,7 +1,7 @@
 export class SignUpForm {
     name: string;
     last: string;
-    mob:string;
+    mobile:string;
     email: string;
     password: string;
     confirm:string;

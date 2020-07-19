@@ -30,15 +30,15 @@ fun(id):any{
     //alert(id); 
     this.router.navigate(['/dashboard/interested'],{queryParams:{eventId:id}});
     } 
-    fun1(id):any{
+fun1(id):any{
       //alert(id);
       this.router.navigate(['/dashboard/detail'],{queryParams:{id:id}});
       } 
       
-      update(f):any
-      {
-          this.eventToBeUpdated=f;
-      }
+  update(f):any
+    {
+      this.eventToBeUpdated=f;
+    }
     updateConfirm()
       {
         this.ds.updateEvent(this.eventToBeUpdated).subscribe((d)=>{
@@ -64,6 +64,7 @@ fun(id):any{
         alert("data is deleted"); 
         this.ds.getEvents().subscribe((d)=>{
           this.details=d.desc;
+          
           if(!(localStorage.getItem('role')=="admin"))
           {
               this.details = this.details.filter((pp)=>{

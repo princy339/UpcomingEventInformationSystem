@@ -33,7 +33,7 @@ export class SignUpComponent implements OnInit {
     this.ds.login(this.sform).subscribe((data) => {
 
       if (data.status === 'OK') {
-         this.router.navigate(['dashboard'], { queryParams: { 'email': this.sform.email,
+         this.router.navigate(['/dashboard'], { queryParams: {'email': this.sform.email,
           'password': this.sform.password}});
       }
    });
@@ -44,15 +44,14 @@ export class SignUpComponent implements OnInit {
            //alert("form OK");
            this.sform.role="member";
            this.ds.register(this.sform).subscribe((data) => {
-  
-             if (data.status === 'OK') {
+            if (data.status === 'OK') {
                alert('Successfully Registered');
-             }
-            window.location.reload();
-      });
+            }
+            // window.location.reload();
+            });
       }
       else{
-        alert("form INVALID");
+        alert("Something is wrong");
       }
     }
   confirmPass(v:AbstractControl):null | {[Key:string]:any}

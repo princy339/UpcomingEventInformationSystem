@@ -16,9 +16,6 @@ import { LaunchesComponent } from './launches/launches.component';
 import { IntroComponent } from './intro/intro.component';
 import { AboutComponent } from './about/about.component';
 import { SchedulesComponent } from './schedules/schedules.component';
-import { SponsorsComponent } from './sponsors/sponsors.component';
-import { VenueComponent } from './venue/venue.component';
-import { SubscribeComponent } from './subscribe/subscribe.component';
 import { ContactComponent } from './contact/contact.component';
 import { Work1Component } from './work1/work1.component';
 import { LoginComponent } from './login/login.component';
@@ -46,9 +43,6 @@ import { DetailComponent } from './detail/detail.component';
     IntroComponent,
     AboutComponent,
     SchedulesComponent,
-    SponsorsComponent,
-    VenueComponent,
-    SubscribeComponent,
     ContactComponent,
     Work1Component,
     LoginComponent,
@@ -69,7 +63,6 @@ import { DetailComponent } from './detail/detail.component';
     FormsModule,
     ReactiveFormsModule,
     AgmCoreModule.forRoot({
-      // apiKey: 'AIzaSyDnlOo66_inDjmykJ8ZvailecQwDLxqDhU'
       apiKey:'AIzaSyBs8X-LOrcTknC5aukQfEU6Y6c08Ul4oa8'
     })
 

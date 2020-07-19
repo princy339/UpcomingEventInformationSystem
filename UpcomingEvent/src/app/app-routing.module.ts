@@ -4,8 +4,6 @@ import { CategoriesComponent } from './categories/categories.component';
 import { IntroComponent } from './intro/intro.component';
 import { AboutComponent } from './about/about.component';
 import { SchedulesComponent } from './schedules/schedules.component';
-import { VenueComponent } from './venue/venue.component';
-import { SubscribeComponent } from './subscribe/subscribe.component';
 import { ContactComponent } from './contact/contact.component';
 import { Work1Component } from './work1/work1.component';
 import { LoginComponent } from './login/login.component';
@@ -28,10 +26,8 @@ const routes: Routes = [
     {path:'signup',component:SignUpComponent},
     {path:'about',component:AboutComponent},
     {path:'schedules/:type',component:SchedulesComponent},
-    {path:'venue',component:VenueComponent},
     {path:'work1',component:Work1Component},
     {path:'categories',component:CategoriesComponent},
-    {path:'subscribe',component:SubscribeComponent},
     {path:'contact',component:ContactComponent},
   ]},
     {path:'dashboard',component:DashboardComponent,canActivate:[AuthGuard] ,children:[

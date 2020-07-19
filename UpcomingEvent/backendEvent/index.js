@@ -25,6 +25,7 @@ var nodemailer = require('nodemailer');
         app.use(cors()); //middleware
         app.use(express.json());
         app.use(express.static(path.join(__dirname, 'uploads')));
+         app.use(express.static(path.join(__dirname, 'UpcomingEvent')));
 
     var storage = multer.diskStorage({
     destination:(req, file, next)=> {
@@ -40,7 +41,11 @@ var nodemailer = require('nodemailer');
     }
     });
     var upload = multer({ storage: storage })
- 
+
+    
+app.get('/', (req,res)=>{
+    res.sendFile('index.html');
+})
 
 //for contacts
     app.get('/getcontact',(req,res)=>{
@@ -197,11 +202,11 @@ app.post('/updateallevent',upload.fields([{
                 
                 if (!err) {
                     
-                    console.log("result of update is _id -> " + r._id);
+                    console.log("result of update is _id -> " + req.body._id);
                     fs.renameSync('./uploads/banner.jpg', './uploads/banner_'+req.body._id + '.jpg');
                     fs.renameSync('./uploads/logo.jpg', './uploads/logo_'+req.body._id + '.jpg');
         
-                     res.send({ msg: "event sucessfully updated", status: 'OK', description: 'event updated and file updated' });
+                     res.send({ msg: "event sucessfully updated", status:'OK', description: 'event updated and file updated' });
               }
                  else {
                      res.send({ msg: "event is not updated", status: 'FAIL', description: err });
@@ -230,18 +235,24 @@ app.post('/deletemoredetail',upload.fields([{
            
         const collection = connection.db('EventsDetails').collection("workshop");
             console.log(req.body);
-                collection.remove({_id:ObjectID(req.body.id)},
-                { $pop: { chiefparty: 
-                    {speaker:req.body.speaker,count:req.body.count, description:req.body.description}
-                    }
-                 }, (err,result)=>{
-
+                var p="chiefparty." +req.body.index;
+                collection.update({_id:ObjectID(req.body.eventid)},
+                {$unset:{[p]:1 }},(err,result)=>{
                     if(!err){
-                        res.send({status:"success",desc:"speaker details are deleted successfully"});
-                    }
-                    else{
-                        res.send({status:"failed",desc:"some error occured"});
-                    }
+                        collection.update({_id:ObjectID(req.body.eventid)},
+                        
+                        {$pull:{"chiefparty":null}},
+                        (err,result)=>{
+                            if(!err){
+                                res.send({status:"success",desc:"speaker details are deleted successfully"});
+                            }
+                            else{
+                                res.send({status:"failed",desc:"some error occured"});
+                            }
+                         }
+                        )}
+            
+                   
                 })
         });
 
@@ -306,12 +317,8 @@ app.post('/deletemoredetail',upload.fields([{
                  secure:false,
                  auth:
                  {
-                  //  user:"weforwomen01@gmail.com",
-                  //  pass:""
                   user:from,
                    pass:appPassword
-                   
-         
                  }
              }
            );
@@ -334,13 +341,7 @@ app.post('/deletemoredetail',upload.fields([{
            }
          });
      }
-     
-    
 
-
-
-
-
-app.listen(3000,()=>{
-    console.log("server is listening on port 3000");
+     app.listen(80,()=>{
+    console.log("server is listening on port 80");
 })

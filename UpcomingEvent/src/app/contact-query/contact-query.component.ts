@@ -25,15 +25,16 @@ updateConfirm()
     this.ds.updatePost(this.customerToBeUpdated).subscribe((d)=>{
       if(d.status=="success")
       {
-        alert("data updated");
+        alert("Contact Details is Updated");
         this.ds.getData().subscribe((d)=>{
           this.details=d.desc;
         })
       }
       else
       {
-        alert("gadbad ho gyi")
+        alert("Contact Details is not Updated")
       }
     });
   }
+  
 }

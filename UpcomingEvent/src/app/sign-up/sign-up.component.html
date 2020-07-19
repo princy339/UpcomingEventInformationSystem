@@ -43,7 +43,7 @@
               <span *ngIf="rf.get('passMatch').get('vpassword').errors" class="text-danger">
                 <span class="text-danger" *ngIf="rf.get('passMatch').get('vpassword').errors.required  &&
                 rf.get('passMatch').get('vpassword').touched">password is required</span>
-                <span *ngIf="rf.get('passMatch').get('vpassword').errors.minlength" class="text-danger">min length should be 6</span>
+                <span *ngIf="rf.get('passMatch').get('vpassword').errors.minlength" class="text-danger">min length should be 8</span>
             </span> 
           </div>
           <div class="form-group col-md-6">
@@ -52,7 +52,8 @@
           </div>
         </div>
          <span *ngIf="rf.get('passMatch').errors">password did not match</span> 
-          <div class="text-center">
+          
+         <div class="text-center">
             <button type="submit" (click)="register(rf)">Get Started</button>
           </div>
           <div class="text-center mt-1">

@@ -15,6 +15,7 @@ import { ActivatedRoute } from '@angular/router';
 export class Work1Component implements OnInit {
   latitude = 20.5937;
   longitude = 78.9629;
+  zoomControl= true;
   nameIn;
   emailIn;
   sub;
@@ -31,15 +32,12 @@ export class Work1Component implements OnInit {
          //alert(p.get('id'));
           this.ds.getEvents().subscribe((d)=>{
             this.posts=d.desc;
+            
             this.posts=this.posts.filter((p)=>{
               return p._id==this.id;
               
             })
-
-            console.log(this.posts);
-
-
-
+              console.log(this.posts);
           })
     })
     //  this.route.queryParamMap.subscribe((d)=>{

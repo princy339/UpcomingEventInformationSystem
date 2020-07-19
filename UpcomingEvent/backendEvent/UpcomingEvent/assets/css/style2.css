@@ -1,0 +1,244 @@
+  /* # Schedule Section----*/
+  #schedule {
+    padding: 60px 0 60px 0;
+  }
+  
+  #schedule .nav-tabs {
+    text-align: center;
+    margin: auto;
+    display: block;
+    border-bottom: 0;
+    margin-bottom: 30px;
+  }
+  
+  #schedule .nav-tabs li {
+    display: inline-block;
+    margin-bottom: 0;
+  }
+  
+  #schedule .nav-tabs a {
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+    background-color: #0e1b4d;
+    color: #fff;
+    padding: 10px 100px;
+  }
+  
+  #schedule .nav-tabs a.active {
+    background-color: #f82249;
+    color: #fff;
+  }
+  
+  #schedule .sub-heading {
+    text-align: center;
+    font-size: 18px;
+    font-style: italic;
+    margin: 0 auto 30px auto;
+  }
+  
+  #schedule .tab-pane {
+    transition: ease-in-out .2s;
+  }
+  
+  #schedule .schedule-item {
+    border-bottom: 1px solid #cad4f6;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    transition: background-color ease-in-out 0.3s;
+  }
+  
+  #schedule .schedule-item:hover {
+    background-color: #fff;
+  }
+  
+  #schedule .schedule-item time {
+    padding-bottom: 5px;
+    display: inline-block;
+  }
+  
+  #schedule .schedule-item .speaker {
+    width: 60px;
+    height: 60px;
+    overflow: hidden;
+    border-radius: 50%;
+    float: left;
+    margin: 0 10px 10px 0;
+  }
+  
+  #schedule .schedule-item .speaker img {
+    height: 100%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    margin-left: 50%;
+    transition: all ease-in-out 0.3s;
+  }
+  
+  #schedule .schedule-item h4 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+  
+  #schedule .schedule-item h4 span {
+    font-style: italic;
+    color: #19328e;
+    font-weight: normal;
+    font-size: 16px;
+  }
+  
+  #schedule .schedule-item p {
+    font-style: italic;
+    color: #152b79;
+    margin-bottom: 0;
+  }
+
+/*--------------------------------------------------------------
+# Gallery Section
+--------------------------------------------------------------*/
+
+#gallery {
+    padding: 60px;
+    overflow: hidden;
+  }
+  
+  #gallery .owl-nav,
+  #gallery .owl-dots {
+    margin-top: 25px;
+    text-align: center;
+  }
+  
+  #gallery .owl-item {
+    border-left: 2px solid #fff;
+    border-right: 2px solid #fff;
+  }
+  
+  #gallery .owl-dot {
+    display: inline-block;
+    margin: 0 5px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #ddd;
+  }
+  
+  #gallery .owl-dot.active {
+    background-color: #f82249;
+  }
+  
+  #gallery .gallery-carousel .owl-stage-outer {
+    overflow: visible;
+  }
+  
+  #gallery .gallery-carousel .center {
+    border: 6px solid #f82249;
+    margin: -10px;
+    box-sizing: content-box;
+    padding: 4px;
+    background: #fff;
+    z-index: 1;
+  }
+/*--------------------------------------------------------------
+# F.A.Q Section
+--------------------------------------------------------------*/
+
+#faq {
+    padding: 60px 0;
+  }
+  
+  #faq #faq-list {
+    padding: 0;
+    list-style: none;
+  }
+  
+  #faq #faq-list li {
+    border-bottom: 1px solid #ddd;
+  }
+  
+  #faq #faq-list a {
+    padding: 18px 0;
+    display: block;
+    position: relative;
+    font-family: "Raleway", sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 600;
+    padding-right: 20px;
+  }
+  
+  #faq #faq-list i {
+    font-size: 24px;
+    position: absolute;
+    right: 0;
+    top: 16px;
+  }
+  
+  #faq #faq-list p {
+    margin-bottom: 20px;
+  }
+  
+  #faq #faq-list a.collapse {
+    color: #f82249;
+  }
+  
+  #faq #faq-list a.collapsed {
+    color: #000;
+  }
+  
+  #faq #faq-list a.collapsed i::before {
+    content: "\f055" !important;
+  }
+  
+  /*--------------------------------------------------------------
+  # Subscribe Section
+  --------------------------------------------------------------*/
+  
+  #subscribe {
+    padding: 60px;
+    background: url(../img/subscribe-bg.jpg) center center no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  #subscribe:before {
+    content: "";
+    background: rgba(6, 12, 34, 0.6);
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+  
+  #subscribe .section-header h2,
+  #subscribe p {
+    color: #fff;
+  }
+  
+  #subscribe input {
+    background: #fff;
+    color: #060c22;
+    border: 0;
+    outline: none;
+    margin: 0;
+    padding: 9px 20px;
+    border-radius: 50px;
+    font-size: 14px;
+  }
+  
+  #subscribe button {
+    border: 0;
+    padding: 9px 25px;
+    cursor: pointer;
+    background: #f82249;
+    color: #fff;
+    transition: all 0.3s ease;
+    outline: none;
+    font-size: 14px;
+    border-radius: 50px;
+  }
+  
+  #subscribe button:hover {
+    background: #e0072f;
+  }

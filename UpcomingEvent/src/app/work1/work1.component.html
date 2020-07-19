@@ -1,8 +1,8 @@
 <section id="about">
     <div class="container-fluid mt-5">
         <div class="row">
-            <div class="col-lg-1 ">
-             <img src="http://localhost:3000/logo_{{posts[0]._id}}.jpg" class="rounded"  height="80" width="85"> 
+            <div class="col-lg-1">
+             <img src="http://3.129.11.255/logo_{{posts[0]._id}}.jpg" class="rounded"  height="80" width="85"> 
             </div>
             <div class="col-lg-9">
               <h2>{{posts[0].title}}</h2>
@@ -15,7 +15,7 @@
         </div> 
           <div class="row"> 
             <div class="col-lg-8">
-             <img src="http://localhost:3000/banner_{{posts[0]._id}}.jpg" class="img-fluid"> 
+             <img src="http://3.129.11.255/banner_{{posts[0]._id}}.jpg" class="img-fluid rounded"> 
             </div>
             <div class="col-lg-4 mt-2">
                 <h3>Date and Time</h3>
@@ -53,29 +53,27 @@
                     </p> 
             </div>
           </div>
-        <div class="row">
-          <div class="col-lg-12">
+        <div class="row mt-5">
+          <div class="col-lg-8">
             <h3>description about event</h3>
             <p>
               {{posts[0].description}}
             </p>
           </div>
         </div>
-        
-       
-          <h2 class=" text-center" style="margin:0 auto;" > Speaker Details </h2>
-          <section id="speakers" class="wow fadeInUp ">
+        <h2 class=" text-center" style="margin:0 auto;" >Speaker Details </h2>
+          <section id="speakers" class="wow fadeInUp">
             <div class="row ">
             <div class="col-lg-12" id="flex-container">
               <ng-container *ngFor="let chief of posts[0].chiefparty">
               <div class="speaker mt-5">
-                <img height="300px;" width="300px;" alt="speaker 1" src="http://localhost:3000/chief{{posts[0]._id}}_{{chief.count}}.jpg" class="img-fluid">
+                <img height="300px;" width="300px;" alt="speaker 1" src="http://3.129.11.255/chief{{posts[0]._id}}_{{chief.count}}.jpg" class="img-fluid">
                 <div class="details">
                 <h3><a>{{chief.speaker}}</a></h3><p>{{chief.description}}</p>
                 <div class="social">
-                  <a><i class="fa fa-twitter"></i></a>
-                  <a><i class="fa fa-facebook"></i></a>
-                  <a><i class="fa fa-google-plus"></i></a>
+                  <a><i class="fa fa-twitter mr-1"></i></a>
+                  <a><i class="fa fa-facebook mr-1"></i></a>
+                  <a><i class="fa fa-google-plus mr-1"></i></a>
                   <a><i class="fa fa-linkedin"></i></a>
                 </div>
               </div>
@@ -122,68 +120,15 @@
             <textarea class="form-control" name="message" #ms="ngModel" [(ngModel)]="msg" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
             <div class="validation"></div>
           </div>
-          <div class="text-center"><button type="submit" (click)="fun()">Send Message</button>
+          <div class="text-center"><button type="submit" class="btn btn-danger" (click)="fun()">Send Message</button>
         </div>
         </form>
       </div>
     </div>
   </div>
 </div>  
-
-    </div>
+</div>
 
 </div>  
 </section>
-
-  <!--<section id="supporters" class="section-with-bg wow bg-dark fadeInUp" >
-    <div class="container">
-      <div class="section-header">
-        <h2>Sponsors</h2>
-      </div>
-
-      <div class="row no-gutters supporters-wrap clearfix">
-
-        <div class="col-lg-3 col-md-4 col-xs-6">
-          <div class="supporter-logo">
-            <img src="assets/img/supporters/1.png" class="img-fluid" alt="">
-          </div>
-        </div>
-        
-        <div class="col-lg-3 col-md-4 col-xs-6">
-          <div class="supporter-logo">
-            <img src="assets/img/supporters/2.png" class="img-fluid" alt="">
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6">
-          <div class="supporter-logo">
-            <img src="assets/img/supporters/3.png" class="img-fluid" alt="">
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6">
-          <div class="supporter-logo">
-            <img src="assets/img/supporters/4.png" class="img-fluid" alt="">
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6">
-          <div class="supporter-logo">
-            <img src="assets/img/supporters/5.png" class="img-fluid" alt="">
-          </div>
-        </div>
-      <div class="col-lg-3 col-md-4 col-xs-6">
-          <div class="supporter-logo">
-            <img src="assets/img/supporters/6.png" class="img-fluid" alt="">
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6">
-          <div class="supporter-logo">
-            <img src="assets/img/supporters/7.png" class="img-fluid" alt="">
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6">
-          <div class="supporter-logo">
-            <img src="assets/img/supporters/8.png" class="img-fluid" alt="">
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>-->
+  

@@ -2,60 +2,26 @@
     <div class="container wow fadeInUp">
       <div class="section-header">
         <h2>Event Schedule</h2>
-        <p>Here is our event schedule</p>
+        <p>Here is Events Schedule</p>
       </div>
-     <h3 class="sub-heading">ALL EVENTS HERE</h3>
-        <div class="tab-content row justify-content-center">
-        <!-- Schdule Day 1 -->
-      
-        <div role="tabpanel" class="col-lg-9 tab-pane fade show active" id="day-1">
-            <!-- <div class="row schedule-item">
-            <div class="col-md-2">
-            <table>
-            <tr *ngFor="let  p of posts">
-              <td>{{p.date}}</td>
-              <td>{{p.description}}</td>
-              <td>{{p.location}}</td>
-            </tr>
-            </table>
-            </div>
-            <div class="col-md-10">
-              <h4 name="name" [(ngModel)]="naIn" (click)="fun()">Workshop on Machine learning</h4>
-              <p name="loc" [(ngModel)]="locIn"> Birla Auditorium,Jaipur</p>
-            </div>
-          </div> -->
-
-
+      <h3 class="sub-heading">ALL EVENTS HERE</h3>
+      <div class="tab-content row justify-content-center">
+        <div role="tabpanel" class="col-lg-9 tab-pane shadow fade show active" id="day-1">
           <ng-container *ngFor="let  p of posts">
-          <div (click)="fun(p._id)" class="row schedule-item">
-            <div class="col-md-3"> {{p.date}}
-              <span style="margin-left:20px; font-weight:26px;" >{{p.time}}</span>
-            </div>
-            <div class="col-md-9">
-              <div class="speaker">
-               <img src="http://localhost:3000/logo_{{p._id}}.jpg" alt=""> 
+            <div (click)="fun(p._id)" class="row schedule-item">
+              <div class="col-md-3"> {{p.date}}
+                <span style="margin-left:20px; font-weight:26px;" >{{p.time}}</span>
               </div>
-              <h4 name="name" ><span>{{p.title}}</span></h4>
-              <p name="loc" >{{p.location}}</p>
+              <div class="col-md-9">
+                <div class="speaker">
+                <img src="http://3.129.11.255/logo_{{p._id}}.jpg" alt=""> 
+                </div>
+                <h4 name="name" ><span>{{p.title}}</span></h4>
+                <p name="loc" >{{p.location}}</p>
+              </div>
             </div>
-          </div>
-        </ng-container>
-
-          
-
-          
-
-        <!-- Schdule Day 2 -->
-      
-        <!-- End Schdule Day 2 -->
-
-        <!-- Schdule Day 3 -->
-        
-        <!-- End Schdule Day 2 -->
-
+          </ng-container>
+        </div>
       </div>
-
-        </div>
-        </div>
-  </section>
-
+    </div>
+</section>

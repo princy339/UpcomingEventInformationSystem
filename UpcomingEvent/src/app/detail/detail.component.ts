@@ -54,38 +54,46 @@ update(f):any
           formdata.set('description', this.eventToBeUpdated.description);
           formdata.set('email', localStorage.getItem('email'));
           formdata.set('time', this.eventToBeUpdated.time);
-          alert(this.eventToBeUpdated._id);
+          // alert(this.eventToBeUpdated._id);
           formdata.set('_id', this.eventToBeUpdated._id);
           formdata.set('banner', this.banner);
           formdata.set('logo', this.logo);
          
-        alert("details is going to server"); //this is working
-       this.ds.updateallEvent(formdata).subscribe((response)=>{  //this.eventToBeUpdated
-        if(response.status=="OK")
+        // alert("details is going to server"); 
+       this.ds.updateallEvent(formdata).subscribe((d)=>{
+        if(d.status=="OK")
           {
-            alert("detail is coming from server"); //but this is not working
-
+             alert("Event is Updated"); 
             this.ds.getEvents().subscribe((d)=>{
               this.details=d.desc;
-            })
+        
+            this.details= this.details.filter((p1)=>{
+              return p1._id==this.id;
+            });
+          })  
+          
         }
           else
           {
-            alert("Event is not updated"); //this is working, it means d.status is not success.
+            alert("Event is not updated");
           }
         });
       }
-
-
-  delete(p)
+// delete speaker details
+delete(p,q)
   {
-    this.ds.deleteMoredetail(p).subscribe((d)=>{
+      // alert(p); // alert(q);
+    this.ds.deleteMoredetail({eventid:q,index:p}).subscribe((d)=>{
+
       if(d.status=="success")
       {
-        
         alert("speaker details are deleted"); 
         this.ds.getEvents().subscribe((d)=>{
           this.details=d.desc;
+          
+          this.details= this.details.filter((p1)=>{
+            return p1._id==this.id;
+          });
 
         })
       }
@@ -95,6 +103,4 @@ update(f):any
       }
     });
   }  
-
-
 }

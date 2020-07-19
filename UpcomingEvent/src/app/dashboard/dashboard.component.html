@@ -1,14 +1,15 @@
-<div id="wrapper">
+
+    <div id="wrapper">
     <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <!-- <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html">SB Admin v2.0</a>
+                </button> -->
+                <a class="navbar-brand" routerLink="">{{sform.role}} Panel</a>
             </div>
             <!-- /.navbar-header -->
             <ul class="nav navbar-top-links navbar-right">
@@ -22,11 +23,7 @@
                     <ul class="dropdown-menu dropdown-user">
                         <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
                         </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li><a (click)="fun()">
-                            <i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a (click)="signout()"><i class="fa fa-sign-out"></i>Logout</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -34,11 +31,11 @@
                 <!-- /.dropdown -->
             </ul>
             <!-- /.navbar-top-links -->
-
-            <div class="navbar-default sidebar" role="navigation">
+        </nav>
+        <div class="navbar-default sidebar" role="navigation" >
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-                        <li class="sidebar-search">
+                        <!-- <li class="sidebar-search">
                             <div class="input-group custom-search-form">
                                 <input type="text" class="form-control" placeholder="Search...">
                                 <span class="input-group-btn">
@@ -47,36 +44,36 @@
                                 </button>
                             </span>
                             </div>
-                            <!-- /input-group -->
+                        </li> --><!-- /input-group -->
+                        <li>
+                            <a>Welcome {{sform.email}}</a>
                         </li>
                         <li>
-                            <a ><i class="fa fa-dashboard fa-fw"></i> {{sform.role}} Panel</a>
+                            <a routerLink="addWorkshop"><i class="fa fa-edit"></i> Add Event</a>
                         </li>
                         <li>
-                            <a routerLink="addWorkshop"><i class="fa fa-table fa-fw"></i> Add Event</a>
-                        </li>
-                        <li>
-                            <a routerLink="moredetail"><i class="fa fa-table fa-fw"></i> Add More detail</a>
+                            <a routerLink="moredetail"><i class="fa fa-edit"></i> Add More detail</a>
                         </li>
                         <li>
                             <a routerLink="listworkshop"><i class="fa fa-table fa-fw"></i> List of Events</a>
-                        </li>
+                        </li >
                         <li *ngIf="sform.role=='admin'"> 
                              <a routerLink="listContact"><i class="fa fa-table fa-fw"></i> List Contacts</a>
                         </li>
                         <li>
-                            <a (click)="fun()"><i class="fa fa-sign-out fa-fw"></i>Logout
+                            <a (click)="signout()"><i class="fa fa-sign-out fa-fw"></i>Logout
                             </a>
                         </li>
                  </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
             </div>
+            
             <!-- /.navbar-static-side -->
-        </nav>
+    
 
         <div id="page-wrapper">
-    
+           
           <router-outlet></router-outlet>
 
         </div>
@@ -84,4 +81,3 @@
 
     </div>
     <!-- /#wrapper -->
-

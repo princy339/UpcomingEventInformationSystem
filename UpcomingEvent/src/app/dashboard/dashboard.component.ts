@@ -16,7 +16,7 @@ import { SignUpForm } from '../Models/signUpForm.model';
 export class DashboardComponent implements OnInit {
   sform = new SignUpForm();
   constructor(private router:Router, private route: ActivatedRoute) { }
-  fun(){
+  signout(){
     localStorage.removeItem("email");
     localStorage.removeItem("password");
     localStorage.removeItem("role");
@@ -27,6 +27,7 @@ export class DashboardComponent implements OnInit {
      this.sform.email = data.get('email');
      this.sform.password = data.get('password');
      this.sform.role = localStorage.getItem("role");
+     
      this.sform.email = localStorage.getItem("email");
     });
   }
